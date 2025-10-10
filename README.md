@@ -31,22 +31,22 @@ The system comprises two main stations:
 ### Block Diagram
 | Measuring Station Block Diagram |
 | :-----------------------------: |
-| ![Block Diagram](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/so_do_khoi_Tramdo.PNG) |
+| ![Block Diagram](./so_do_khoi_Tramdo.PNG) |
 
 ### Measuring Station (Trạm Đo)
 | Schematic | PCB Layout | 3D View |
 | :---: | :---: | :---: |
-| ![Measuring Station Schematic](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/sch_tram_do.png) | ![Measuring Station PCB](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/pcb_tram_do.png) | ![Measuring Station 3D View](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/3d_view_Tramdo.PNG) |
+| ![Measuring Station Schematic](./sch_tram_do.png) | ![Measuring Station PCB](./pcb_tram_do.png) | ![Measuring Station 3D View](./3d_view_Tramdo.PNG) |
 
 ### Control Station (Trạm Kiểm Soát)
 | Schematic | PCB Layout | 3D View |
 | :---: | :---: | :---: |
-| ![Control Station Schematic](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/sch_tram_kiem_soat.png) | ![Control Station PCB](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/pcb_tram_kiem_soat.png) | ![Control Station 3D View](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/3d_view_Tramkiemsoat.png) |
+| ![Control Station Schematic](./sch_tram_kiem_soat.png) | ![Control Station PCB](./pcb_tram_kiem_soat.png) | ![Control Station 3D View](./3d_view_Tramkiemsoat.png) |
 
 ### Pinout Diagrams
 | ESP32-D Pinout | ESP32-S3 DevKitC-1 Pinout |
 | :---: | :---: |
-| ![ESP32D Pinout](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/esp32d.jpg) | ![ESP32-S3 Pinout](https://raw.githubusercontent.com/Datnewlevel/Smart-flood-warning/main/esp32-s3_devkitc-1_pinlayout_v1.1.jpg) |
+| ![ESP32D Pinout](./esp32d.jpg) | ![ESP32-S3 Pinout](./esp32-s3_devkitc-1_pinlayout_v1.1.jpg) |
 
 ---
 
