@@ -1,0 +1,24 @@
+Tên đề tài: Thiết kế mô hình hệ thống cảnh báo lũ thông minh
+Cơ chế đề tài: Sẽ có 2 trạm , 1 trạm đo, 1 trạm kiểm soát. 2 trạm sẽ kết nối với nhau bằng Lora, 
+Trạm đo sẽ sử dụng esp32 kết nối cảm biến siêu âm để đo mực nước dâng và gửi tín hiệu bằng lora về trạm kiểm soát 
+Trạm kiểm soát sử dụng esp32-s3 sẽ nhận tín hiệu lora và có tích hợp màn hình và đèn led hiện thị 
+các mức cảnh báo và gửi tín hiệu đến loa phát thanh để phát 1 bản ghi âm cảnh báo và gửi tin nhắn
+vào kênh telegram
+Các linh kiện của trạm đo:
+2 pin 18650
+mạch sặc 4056
+1 tụ 100uF và 1 tụ 10uF
+Switch 3 chân
+ESP32-WROOM-32D
+Sensor SR04T
+Lora ra-02
+mosfet 2n7000
+điện trở 10k, 1k và 2 điện trở 220
+1 led đỏ và 1 led xanh lá
+Các linh kiện của trạm kiểm soát: 
+Màn hình LCD đã gắn I2C có 4 chân VCC GND SDA SCL
+1 Loa để thông báo âm thanh cảnh báo
+3 đèn led hiện thị 3 mức cảnh báo khác nhau
+1 lora ra-02
+3 điện trở 220
+ESP32-S3

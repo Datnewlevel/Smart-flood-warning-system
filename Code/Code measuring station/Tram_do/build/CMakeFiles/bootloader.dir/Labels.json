@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}
