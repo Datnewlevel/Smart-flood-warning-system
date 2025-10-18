@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.16)
 
 if("${CONFIG}" STREQUAL "" OR "${CONFIG}" STREQUAL "")
   file(REMOVE_RECURSE
-  "Do_an_dientu_Tram_do.bin"
-  "Do_an_dientu_Tram_do.map"
+  "Tram_do.bin"
+  "Tram_do.map"
   "bootloader\\bootloader.bin"
   "bootloader\\bootloader.elf"
   "bootloader\\bootloader.map"

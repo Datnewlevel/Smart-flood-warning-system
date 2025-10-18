@@ -1,0 +1,2 @@
+source E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/gdbinit/symbols
+source E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/gdbinit/connect

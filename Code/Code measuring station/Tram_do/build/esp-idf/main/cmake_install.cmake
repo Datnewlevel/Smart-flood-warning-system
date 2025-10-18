@@ -1,8 +1,8 @@
-# Install script for directory: E:/ESP32_VisualCode/Do_an_dientu_Tram_do/main
+# Install script for directory: E:/ESP32_VisualCode/Tram_do/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Do_an_dientu_Tram_do")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Tram_do")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

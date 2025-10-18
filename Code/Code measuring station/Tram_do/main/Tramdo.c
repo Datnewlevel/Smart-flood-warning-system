@@ -95,6 +95,20 @@ uint8_t lora_read_reg(uint8_t reg) {
     return rx_data[1];
 }
 
+// Enable CRC for packet verification (CRITICAL for RX/TX sync)
+void lora_enable_crc(void) {
+    lora_write_reg(REG_MODEM_CONFIG_2, lora_read_reg(REG_MODEM_CONFIG_2) | 0x04);
+    ESP_LOGI(TAG, "CRC enabled: 0x%02X", lora_read_reg(REG_MODEM_CONFIG_2));
+}
+
+// Set TX power level (2-17 dBm for PA_BOOST)
+void lora_set_tx_power(int level) {
+    if (level < 2) level = 2;
+    else if (level > 17) level = 17;
+    lora_write_reg(REG_PA_CONFIG, 0x80 | (level - 2)); // PA_BOOST
+    ESP_LOGI(TAG, "TX Power set to %d dBm: REG_PA_CONFIG=0x%02X", level, lora_read_reg(REG_PA_CONFIG));
+}
+
 bool lora_send_packet(uint8_t recipient, uint8_t sender, uint8_t *payload, uint8_t len) {
     ESP_LOGI(TAG, "Preparing to send packet: To=0x%02X, From=0x%02X, Len=%d", recipient, sender, len);
     
@@ -161,41 +175,84 @@ bool lora_send_packet(uint8_t recipient, uint8_t sender, uint8_t *payload, uint8
 
 // --- Ultrasonic Sensor Functions ---
 
+// Helper function to sort a small array of floats (bubble sort is fine for N=5)
+void sort_floats(float *arr, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                float temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
 float measure_distance(void) {
+    const int NUM_SAMPLES = 5;
+    float samples[NUM_SAMPLES];
+    int valid_samples_count = 0;
+
+    // Power on the sensor and wait a bit longer for it to stabilize
     gpio_set_level(SENSOR_PWR_PIN, 1);
-    vTaskDelay(pdMS_TO_TICKS(50));
+    vTaskDelay(pdMS_TO_TICKS(100));
 
-    gpio_set_level(SENSOR_TRIG_PIN, 0);
-    esp_rom_delay_us(2);
-    gpio_set_level(SENSOR_TRIG_PIN, 1);
-    esp_rom_delay_us(10);
-    gpio_set_level(SENSOR_TRIG_PIN, 0);
+    for (int i = 0; i < NUM_SAMPLES; i++) {
+        // Send trigger pulse
+        gpio_set_level(SENSOR_TRIG_PIN, 0);
+        esp_rom_delay_us(2);
+        gpio_set_level(SENSOR_TRIG_PIN, 1);
+        esp_rom_delay_us(10);
+        gpio_set_level(SENSOR_TRIG_PIN, 0);
 
-    int64_t wait_start_time = esp_timer_get_time();
-    while (gpio_get_level(SENSOR_ECHO_PIN) == 0) {
-        if ((esp_timer_get_time() - wait_start_time) > 50000) { // 50ms timeout
-            ESP_LOGW(TAG, "Timeout waiting for echo pulse to start.");
-            gpio_set_level(SENSOR_PWR_PIN, 0);
-            return -1.0;
+        // Wait for echo pulse to start
+        int64_t wait_start_time = esp_timer_get_time();
+        while (gpio_get_level(SENSOR_ECHO_PIN) == 0) {
+            if ((esp_timer_get_time() - wait_start_time) > 30000) { // 30ms timeout
+                samples[i] = -1.0f;
+                ESP_LOGW(TAG, "Sample %d: Timeout waiting for echo pulse to start.", i);
+                goto next_sample;
+            }
         }
-    }
-    int64_t start_time = esp_timer_get_time();
 
-    while (gpio_get_level(SENSOR_ECHO_PIN) == 1) {
-        if ((esp_timer_get_time() - start_time) > 50000) { // 50ms timeout
-            ESP_LOGW(TAG, "Timeout waiting for echo pulse to end.");
-            gpio_set_level(SENSOR_PWR_PIN, 0);
-            return -1.0;
+        // Measure echo pulse duration
+        int64_t start_time = esp_timer_get_time();
+        while (gpio_get_level(SENSOR_ECHO_PIN) == 1) {
+            if ((esp_timer_get_time() - start_time) > 30000) { // 30ms timeout (corresponds to ~5m distance)
+                samples[i] = -1.0f;
+                ESP_LOGW(TAG, "Sample %d: Timeout waiting for echo pulse to end.", i);
+                goto next_sample;
+            }
         }
-    }
-    int64_t end_time = esp_timer_get_time();
+        int64_t end_time = esp_timer_get_time();
 
+        // Calculate distance for this sample
+        uint32_t duration = end_time - start_time;
+        samples[i] = (duration * 0.0343) / 2.0;
+        
+        if (samples[i] > 0 && samples[i] < 450) {
+            valid_samples_count++;
+        }
+
+    next_sample:
+        vTaskDelay(pdMS_TO_TICKS(50)); // Short delay between samples
+    }
+
+    // Power off the sensor
     gpio_set_level(SENSOR_PWR_PIN, 0);
 
-    uint32_t duration = end_time - start_time;
-    float distance = (duration * 0.0343) / 2.0;
+    // If not enough valid samples, return an error
+    if (valid_samples_count < 3) {
+        ESP_LOGE(TAG, "Measurement failed: Not enough valid samples (%d/%d).", valid_samples_count, NUM_SAMPLES);
+        return -1.0f;
+    }
 
-    return distance;
+    // Sort the samples to find the median
+    sort_floats(samples, NUM_SAMPLES);
+
+    // Return the median value
+    ESP_LOGI(TAG, "Samples: %.1f, %.1f, %.1f, %.1f, %.1f -> Median: %.1f", samples[0], samples[1], samples[2], samples[3], samples[4], samples[NUM_SAMPLES / 2]);
+    return samples[NUM_SAMPLES / 2];
 }
 
 // --- Main Task ---
@@ -206,7 +263,7 @@ void measurement_task(void *pvParameters) {
     ESP_LOGI(TAG, "Measurement task started. Subscribing to Watchdog Timer.");
     ESP_ERROR_CHECK(esp_task_wdt_add(NULL));
 
-    ESP_LOGI(TAG, "Will measure and send data every 5 seconds.");
+    ESP_LOGI(TAG, "Will measure and send data every 7 seconds.");
 
     while (1) {
         int64_t cycle_start_time = esp_timer_get_time();
@@ -214,20 +271,21 @@ void measurement_task(void *pvParameters) {
         ESP_LOGI(TAG, "--- Starting new measurement cycle (WDT reset) ---");
         esp_task_wdt_reset();
 
-        // 1. Measure distance
+        // 1. Đo khoảng cách và tính mực nước
         float distance = measure_distance();
+        float water_level = 100.0f - distance; // Mực nước = 100cm - khoảng cách đo được
 
-        // 2. Process results and provide feedback
-        if (distance > 0 && distance < 450) {
-            // Successful Measurement: 1 green blink
-            ESP_LOGI(TAG, "Measured Distance: %.2f cm. Blinking GREEN once.", distance);
+        // 2. Xử lý kết quả và phản hồi
+        if (distance > 0 && distance < 450) { // Vẫn kiểm tra giá trị thô của cảm biến
+            // Đo thành công: nháy xanh 1 lần
+            ESP_LOGI(TAG, "Muc nuoc: %.2f cm. Nhay den GREEN mot lan.", water_level);
             gpio_set_level(LED_GREEN_PIN, 1);
             vTaskDelay(pdMS_TO_TICKS(1000));
             gpio_set_level(LED_GREEN_PIN, 0);
 
-            // Attempt to send data via LoRa
+            // Thử gửi dữ liệu qua LoRa
             char payload[32];
-            int payload_len = snprintf(payload, sizeof(payload), "Distance: %.2f", distance);
+            int payload_len = snprintf(payload, sizeof(payload), "Muc nuoc: %.2f", water_level);
             if (lora_send_packet(LORA_CONTROL_STATION_ADDRESS, LORA_MEASUREMENT_STATION_ADDRESS, (uint8_t *)payload, payload_len)) {
                 // Successful LoRa Send: 1 red blink
                 ESP_LOGI(TAG, "LoRa sent successfully. Blinking RED once.");
@@ -257,10 +315,10 @@ void measurement_task(void *pvParameters) {
             gpio_set_level(LED_GREEN_PIN, 0);
         }
 
-        // 3. Wait for the next 5-second cycle
+        // 3. Wait for the next 7-second cycle
         int64_t cycle_end_time = esp_timer_get_time();
         int64_t cycle_duration_ms = (cycle_end_time - cycle_start_time) / 1000;
-        int delay_ms = 5000 - cycle_duration_ms;
+        int delay_ms = 7000 - cycle_duration_ms;
         if (delay_ms < 0) { delay_ms = 0; }
         ESP_LOGI(TAG, "--- Cycle finished. Waiting for %d ms... ---", delay_ms);
         vTaskDelay(pdMS_TO_TICKS(delay_ms));
@@ -371,20 +429,29 @@ void app_main(void)
     // Set LoRa parameters: SF7, CRC on
     lora_write_reg(0x1E, 0x74);
 
-    // Set PA (Power Amplifier) configuration for maximum output power
-    // PA_BOOST pin, output power = 17 dBm
-    lora_write_reg(REG_PA_CONFIG, 0xFF); // Max power: PA_BOOST, OutputPower=15 (17dBm)
-    
-    // Alternative safer setting (uncomment if needed):
-    // lora_write_reg(REG_PA_CONFIG, 0x8F); // PA_BOOST, OutputPower=7 (14dBm)
-    
-    ESP_LOGI(TAG, "  PA_CONFIG: 0x%02X", lora_read_reg(REG_PA_CONFIG));
+    // ✅ CRITICAL: Enable CRC (must match receiver!)
+    lora_enable_crc();
+
+    // ✅ Set TX power using helper function
+    // Using 14 dBm for safety with spring antenna
+    lora_set_tx_power(14); // 14 dBm (safe for most antennas)
+    // For max range with good antenna, use: lora_set_tx_power(17);
 
     // Set to standby mode
     lora_write_reg(0x01, 0x81);
     vTaskDelay(pdMS_TO_TICKS(10));
-    ESP_LOGI(TAG, "LoRa module initialized and in standby mode.");
 
+    ESP_LOGI(TAG, "LoRa Config Check:");
+    ESP_LOGI(TAG, "  OpMode: 0x%02X", lora_read_reg(0x01));
+    ESP_LOGI(TAG, "  ModemCfg1: 0x%02X", lora_read_reg(0x1D));
+    ESP_LOGI(TAG, "  ModemCfg2: 0x%02X (CRC enabled)", lora_read_reg(0x1E));
+    ESP_LOGI(TAG, "  SyncWord: 0x%02X", lora_read_reg(0x39));
+    ESP_LOGI(TAG, "  Freq MSB: 0x%02X", lora_read_reg(0x06));
+    ESP_LOGI(TAG, "  Freq MID: 0x%02X", lora_read_reg(0x07));
+    ESP_LOGI(TAG, "  Freq LSB: 0x%02X", lora_read_reg(0x08));
+    ESP_LOGI(TAG, "  PA_CONFIG: 0x%02X (TX Power: 14dBm)", lora_read_reg(REG_PA_CONFIG));
+
+    ESP_LOGI(TAG, "LoRa module initialized and in standby mode.");
     ESP_LOGI(TAG, "===== Initialization Complete ======");
     ESP_LOGI(TAG, "Creating measurement task.");
 

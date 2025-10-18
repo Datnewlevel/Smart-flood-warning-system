@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader/esp-idf/cmake_install.cmake")
+  include("E:/ESP32_VisualCode/Tram_do/build/bootloader/esp-idf/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -57,6 +57,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/ESP32_VisualCode/Tram_do/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

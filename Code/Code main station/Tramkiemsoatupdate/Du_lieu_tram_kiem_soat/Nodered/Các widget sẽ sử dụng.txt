@@ -1,0 +1,45 @@
+1. Các Widget sẽ sử dụng và bố cục:
+
+ui_template (cho Trạng thái Cảnh báo Lớn):
+
+Đây sẽ là widget chiếm không gian lớn nhất ở phía trên cùng, hiển thị mức cảnh báo hiện tại của trạm.
+
+Bạn sẽ dùng HTML/CSS/JavaScript để thay đổi màu nền của widget (Xanh, Vàng, Cam, Đỏ) dựa trên trạng thái mực nước.
+
+Hiển thị văn bản lớn và rõ ràng: "Mức nước an toàn", "Cảnh báo nguy hiểm", "Báo động khẩn cấp".
+
+Bạn có thể thêm icon liên quan (ví dụ: giọt nước, loa cảnh báo) để tăng tính trực quan.
+
+ui_gauge hoặc ui_slider (cho Mực nước hiện tại):
+
+Hiển thị giá trị mực nước hiện tại dưới dạng kim đồng hồ (gauge) hoặc thanh trượt có thang đo.
+
+Thiết lập các ngưỡng màu trên gauge để trùng khớp với mức cảnh báo.
+
+ui_text (cho Thông tin chi tiết trạm):
+
+Hiển thị các thông tin cơ bản của trạm: Tên trạm, Địa điểm, Thời gian cập nhật cuối cùng.
+
+Giá trị mực nước thực tế (ví dụ: 2.5m).
+
+ui_chart (cho Biểu đồ lịch sử mực nước):
+
+Một biểu đồ đường hiển thị sự thay đổi mực nước của trạm trong 24 giờ qua hoặc theo khoảng thời gian tùy chỉnh.
+
+Sử dụng màu sắc để làm nổi bật các vùng mực nước cảnh báo trên biểu đồ.
+
+ui_template (cho Bản đồ nhỏ):
+
+Một bản đồ nhỏ (chỉ chiếm một góc) hiển thị duy nhất vị trí của trạm đo.
+
+Sử dụng marker được tô màu theo trạng thái hiện tại. Người dùng có thể zoom vào/ra.
+
+2.Bố cục tổng thể trên Node-RED Dashboard:
+
+Tab chính: Tạo một Tab duy nhất.
+
+Group 1 (Main Status - Trạng thái chính): Chứa ui_template lớn cho trạng thái cảnh báo và ui_gauge hoặc ui_text cho giá trị mực nước hiện tại.
+
+Group 2 (Details & Map - Chi tiết & Bản đồ): Chứa ui_text cho thông tin trạm và ui_template cho bản đồ nhỏ. Có thể đặt cạnh Group 1 hoặc dưới Group 1.
+
+Group 3 (History Chart - Biểu đồ lịch sử): Chứa ui_chart hiển thị lịch sử mực nước. Đặt ở dưới cùng hoặc bên cạnh nếu có đủ không gian.

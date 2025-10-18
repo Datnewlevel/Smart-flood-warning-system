@@ -18,8 +18,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader/bootloader.elf
+    add-symbol-file E:/ESP32_VisualCode/Tram_do/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/Do_an_dientu_Tram_do.elf
+file E:/ESP32_VisualCode/Tram_do/build/Tram_do.elf

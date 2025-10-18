@@ -1,4 +1,4 @@
-/* * Data converted from E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from E:/ESP32_VisualCode/Tram_do/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 #if !defined (__APPLE__) && !defined (__linux__)

@@ -1,15 +1,15 @@
 {
     "version":            "1.2",
-    "project_name":       "Do_an_dientu_Tram_do",
+    "project_name":       "Tram_do",
     "project_version":    "9ece8c1-dirty",
-    "project_path":       "E:/ESP32_VisualCode/Do_an_dientu_Tram_do",
+    "project_path":       "E:/ESP32_VisualCode/Tram_do",
     "idf_path":           "C:/Users/Admin/esp/v5.5.1/esp-idf",
-    "build_dir":          "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build",
-    "config_file":        "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/sdkconfig",
+    "build_dir":          "E:/ESP32_VisualCode/Tram_do/build",
+    "config_file":        "E:/ESP32_VisualCode/Tram_do/sdkconfig",
     "config_defaults":    "",
-    "bootloader_elf":     "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader/bootloader.elf",
-    "app_elf":            "Do_an_dientu_Tram_do.elf",
-    "app_bin":            "Do_an_dientu_Tram_do.bin",
+    "bootloader_elf":     "E:/ESP32_VisualCode/Tram_do/build/bootloader/bootloader.elf",
+    "app_elf":            "Tram_do.elf",
+    "app_bin":            "Tram_do.bin",
     "build_type":         "flash_app",
     "git_revision":       "v5.5.1",
     "target":             "esp32",
@@ -26,7 +26,7 @@
     },
     "common_component_reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "soc", "hal", "esp_rom", "esp_common", "esp_system", "xtensa" ],
     "build_components" : [ "app_update", "bootloader", "bootloader_support", "cxx", "efuse", "esp_app_format", "esp_bootloader_format", "esp_common", "esp_driver_gpio", "esp_driver_spi", "esp_hw_support", "esp_mm", "esp_partition", "esp_pm", "esp_rom", "esp_security", "esp_system", "esp_timer", "esptool_py", "freertos", "hal", "heap", "log", "main", "mbedtls", "newlib", "partition_table", "pthread", "soc", "spi_flash", "xtensa", "" ],
-    "build_component_paths" : [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/app_update", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/cxx", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_app_format", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_bootloader_format", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_common", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_gpio", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_partition", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_pm", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_security", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esptool_py", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log", "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/main", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/mbedtls", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/partition_table", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa", "" ],
+    "build_component_paths" : [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/app_update", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/cxx", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_app_format", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_bootloader_format", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_common", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_gpio", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_partition", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_pm", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_security", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esptool_py", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log", "E:/ESP32_VisualCode/Tram_do/main", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/mbedtls", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/partition_table", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa", "" ],
     "build_component_info" : {
         "app_update": {
             "alias": "idf::app_update",
@@ -39,7 +39,7 @@
             "priv_reqs": [ "esptool_py", "efuse", "spi_flash" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/app_update/libapp_update.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/app_update/libapp_update.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/app_update/esp_ota_ops.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/app_update/esp_ota_app_desc.c" ],
             "include_dirs": [ "include" ]
         },
@@ -69,7 +69,7 @@
             "priv_reqs": [ "spi_flash", "mbedtls", "efuse", "heap", "esp_bootloader_format", "esp_app_format" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/bootloader_support/libbootloader_support.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/bootloader_support/libbootloader_support.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_common_loader.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_clock_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_mem.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_random.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_efuse.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/flash_encrypt.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/secure_boot.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_random_esp32.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/bootloader_flash/src/flash_qio_mode.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/bootloader_flash/src/bootloader_flash_config_esp32.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_utility.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/flash_partitions.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/esp_image_format.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/bootloader_sha.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader_support/src/esp32/secure_boot_secure_features.c" ],
             "include_dirs": [ "include", "bootloader_flash/include" ]
         },
@@ -84,7 +84,7 @@
             "priv_reqs": [ "esp_system", "pthread" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/cxx/libcxx.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/cxx/libcxx.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/cxx/cxx_exception_stubs.cpp", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/cxx/cxx_guards.cpp", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/cxx/cxx_init.cpp" ],
             "include_dirs": []
         },
@@ -99,7 +99,7 @@
             "priv_reqs": [ "bootloader_support", "soc", "spi_flash", "esp_system", "esp_partition", "esp_app_format" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/efuse/libefuse.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/efuse/libefuse.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/esp32/esp_efuse_table.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/esp32/esp_efuse_fields.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/esp32/esp_efuse_utility.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_api.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_fields.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_utility.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/src/efuse_controller/keys/without_key_purposes/three_key_blocks/esp_efuse_api_key.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/efuse/src/esp_efuse_startup.c" ],
             "include_dirs": [ "include", "esp32/include" ]
         },
@@ -114,7 +114,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_app_format/libesp_app_format.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_app_format/libesp_app_format.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_app_format/esp_app_desc.c" ],
             "include_dirs": [ "include" ]
         },
@@ -129,7 +129,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_bootloader_format/esp_bootloader_desc.c" ],
             "include_dirs": [ "include" ]
         },
@@ -144,7 +144,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_common/libesp_common.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_common/libesp_common.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_common/src/esp_err_to_name.c" ],
             "include_dirs": [ "include" ]
         },
@@ -159,7 +159,7 @@
             "priv_reqs": [ "esp_pm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_gpio/src/gpio.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_gpio/src/gpio_glitch_filter_ops.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_gpio/src/rtc_io.c" ],
             "include_dirs": [ "include" ]
         },
@@ -174,7 +174,7 @@
             "priv_reqs": [ "esp_timer", "esp_mm", "esp_driver_gpio" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_driver_spi/libesp_driver_spi.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_driver_spi/libesp_driver_spi.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi/src/gpspi/spi_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi/src/gpspi/spi_master.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi/src/gpspi/spi_slave.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_driver_spi/src/gpspi/spi_dma.c" ],
             "include_dirs": [ "include" ]
         },
@@ -189,7 +189,7 @@
             "priv_reqs": [ "efuse", "spi_flash", "bootloader_support", "esp_security", "esp_driver_gpio", "esp_timer", "esp_pm", "esp_mm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_hw_support/libesp_hw_support.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_hw_support/libesp_hw_support.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/cpu.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/esp_cpu_intr.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/esp_memory_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/cpu_region_protect.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/esp_clk.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/clk_ctrl_os.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/hw_random.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/intr_alloc.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/mac_addr.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/periph_ctrl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/revision.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/rtc_module.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/regi2c_ctrl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/esp_gpio_reserve.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sar_periph_ctrl_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/io_mux.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/esp_clk_tree.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/dma/esp_dma_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/dma/gdma_link.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/spi_bus_lock.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/clk_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp_clk_tree_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/spi_share_hw_ctrl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/adc_share_hw_ctrl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_modem.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_modes.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_console.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_usb.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_gpio.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_event.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/rtc_wdt.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/mspi_timing_tuning/mspi_timing_tuning.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/sleep_wake_stub.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/esp_clock_output.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/power_supply/brownout.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/rtc_clk.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/rtc_clk_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/rtc_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/rtc_sleep.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/rtc_time.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/chip_info.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/cache_sram_mmu.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/port/esp32/sar_periph_ctrl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_hw_support/lowpower" ],
             "include_dirs": [ "include", "include/soc", "include/soc/esp32", "dma/include", "ldo/include", "debug_probe/include", "mspi_timing_tuning/include", "mspi_timing_tuning/tuning_scheme_impl/include", "power_supply/include" ]
         },
@@ -204,7 +204,7 @@
             "priv_reqs": [ "heap", "spi_flash" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_mm/libesp_mm.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_mm/libesp_mm.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/esp_mmu_map.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/port/esp32/ext_mem_layout.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/esp_cache_msync.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/esp_cache_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/cache_esp32.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_mm/heap_align_hw.c" ],
             "include_dirs": [ "include" ]
         },
@@ -219,7 +219,7 @@
             "priv_reqs": [ "esp_system", "spi_flash", "partition_table", "bootloader_support", "app_update" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_partition/libesp_partition.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_partition/libesp_partition.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_partition/partition.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_partition/partition_target.c" ],
             "include_dirs": [ "include" ]
         },
@@ -234,7 +234,7 @@
             "priv_reqs": [ "esp_system", "esp_driver_gpio", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_pm/libesp_pm.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_pm/libesp_pm.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_pm/pm_locks.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_pm/pm_trace.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_pm/pm_impl.c" ],
             "include_dirs": [ "include" ]
         },
@@ -249,7 +249,7 @@
             "priv_reqs": [ "soc", "hal" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_rom/libesp_rom.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_rom/libesp_rom.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_sys.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_print.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_crc.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_uart.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_spiflash.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_efuse.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_gpio.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_rom/patches/esp_rom_longjmp.S" ],
             "include_dirs": [ "include", "esp32/include", "esp32/include/esp32", "esp32" ]
         },
@@ -264,7 +264,7 @@
             "priv_reqs": [ "efuse", "esp_hw_support", "esp_system", "esp_timer" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_security/libesp_security.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_security/libesp_security.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_security/src/init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_security/src/esp_crypto_lock.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_security/src/esp_crypto_periph_clk.c" ],
             "include_dirs": [ "include" ]
         },
@@ -279,7 +279,7 @@
             "priv_reqs": [ "spi_flash", "esp_timer", "esp_mm", "bootloader_support", "esp_pm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_system/libesp_system.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_system/libesp_system.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/esp_err.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/crosscore_int.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/esp_ipc.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/esp_system_console.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/freertos_hooks.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/int_wdt.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/panic.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/esp_system.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/startup.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/startup_funcs.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/system_time.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/stack_check.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/ubsan.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/xt_wdt.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/task_wdt/task_wdt.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/task_wdt/task_wdt_impl_timergroup.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/cpu_start.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/panic_handler.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/esp_system_chip.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/image_process.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/esp_ipc_isr.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_port.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_handler.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/esp_ipc_isr_routines.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/panic_arch.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/panic_handler_asm.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/expression_with_stack_asm.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/debug_helpers_asm.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/debug_stubs.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/arch/xtensa/trax.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/soc/esp32/highint_hdl.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/soc/esp32/clk.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/soc/esp32/reset_reason.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/soc/esp32/system_internal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_system/port/soc/esp32/cache_err_int.c" ],
             "include_dirs": [ "include" ]
         },
@@ -294,7 +294,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/esp_timer/libesp_timer.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/esp_timer/libesp_timer.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/ets_timer_legacy.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/system_time.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer_impl_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/esp_timer/src/esp_timer_impl_lac.c" ],
             "include_dirs": [ "include" ]
         },
@@ -324,7 +324,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/freertos/libfreertos.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/freertos/libfreertos.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/heap_idf.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/app_startup.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/port_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/port_systick.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/list.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/tasks.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/timers.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/event_groups.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/stream_buffer.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/portasm.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/xtensa_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/xtensa_overlay_os_hook.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/esp_additions/freertos_compatibility.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/esp_additions/idf_additions_event_groups.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/freertos/esp_additions/idf_additions.c" ],
             "include_dirs": [ "config/include", "config/include/freertos", "config/xtensa/include", "FreeRTOS-Kernel/include", "FreeRTOS-Kernel/portable/xtensa/include", "FreeRTOS-Kernel/portable/xtensa/include/freertos", "esp_additions/include" ]
         },
@@ -339,7 +339,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/hal/libhal.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/hal/libhal.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/hal_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/mpu_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/efuse_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/esp32/efuse_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/wdt_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/mmu_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/esp32/cache_hal_esp32.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/color_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_flash_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_flash_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_flash_encrypt_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/esp32/clk_tree_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/uart_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/uart_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/gpio_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/rtc_io_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/timer_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/ledc_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/ledc_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/i2c_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/i2c_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/rmt_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/pcnt_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/mcpwm_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/twai_hal_sja1000.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/i2s_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/sdm_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/sdmmc_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/adc_hal_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/adc_oneshot_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/adc_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/mpi_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/sha_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/aes_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/brownout_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_slave_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/spi_slave_hal_iram.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/sdio_slave_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/esp32/touch_sensor_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/touch_sensor_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/touch_sens_hal.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/hal/esp32/gpio_hal_workaround.c" ],
             "include_dirs": [ "platform_port/include", "esp32/include", "include" ]
         },
@@ -354,7 +354,7 @@
             "priv_reqs": [ "soc" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/heap/libheap.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/heap/libheap.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/heap_caps_base.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/heap_caps.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/heap_caps_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/multi_heap.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/tlsf/tlsf.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/port/memory_layout_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/heap/port/esp32/memory_layout.c" ],
             "include_dirs": [ "include", "tlsf" ]
         },
@@ -369,7 +369,7 @@
             "priv_reqs": [ "hal", "soc", "esp_hw_support" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/log/liblog.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/log/liblog.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/os/log_timestamp.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_timestamp_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/os/log_lock.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/buffer/log_buffers.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/os/util.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/util.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_format_text.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_print.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/os/log_write.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_level/log_level.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_level/tag_log_level/tag_log_level.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_level/tag_log_level/linked_list/log_linked_list.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/log/src/log_level/tag_log_level/cache/log_binary_heap.c" ],
             "include_dirs": [ "include" ]
         },
@@ -377,15 +377,15 @@
             "alias": "idf::main",
             "target": "___idf_main",
             "prefix": "idf",
-            "dir": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/main",
+            "dir": "E:/ESP32_VisualCode/Tram_do/main",
             "type": "LIBRARY",
             "lib": "__idf_main",
             "reqs": [ "spi_flash", "esp_driver_gpio", "esp_driver_spi", "esp_timer" ],
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/main/libmain.a",
-            "sources": [ "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/main/Tramdo.c" ],
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/main/libmain.a",
+            "sources": [ "E:/ESP32_VisualCode/Tram_do/main/Tramdo.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {
@@ -399,8 +399,8 @@
             "priv_reqs": [ "soc", "esp_hw_support", "esp_pm" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/mbedtls/libmbedtls.a",
-            "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c", "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/x509_crt_bundle.S" ],
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/mbedtls/libmbedtls.a",
+            "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/mbedtls/esp_crt_bundle/esp_crt_bundle.c", "E:/ESP32_VisualCode/Tram_do/build/x509_crt_bundle.S" ],
             "include_dirs": [ "port/include", "mbedtls/include", "mbedtls/library", "esp_crt_bundle/include" ]
         },
         "newlib": {
@@ -414,7 +414,7 @@
             "priv_reqs": [ "soc", "spi_flash" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/newlib/libnewlib.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/newlib/libnewlib.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/abort.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/assert.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/heap.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/locks.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/poll.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/pthread.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/random.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/getentropy.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/termios.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/stdatomic.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/time.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/sysconf.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/realpath.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/scandir.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/syscalls.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/reent_syscalls.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/port/esp_time_impl.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/flockfile.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/reent_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/newlib_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/newlib/src/port/esp_time_impl.c" ],
             "include_dirs": [ "platform_include" ]
         },
@@ -444,7 +444,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/pthread/libpthread.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/pthread/libpthread.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread/pthread.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread/pthread_cond_var.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread/pthread_local_storage.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread/pthread_rwlock.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/pthread/pthread_semaphore.c" ],
             "include_dirs": [ "include" ]
         },
@@ -459,7 +459,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/soc/libsoc.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/soc/libsoc.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/lldesc.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/dport_access_common.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/interrupts.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/gpio_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/uart_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/dport_access.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/adc_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/emac_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/spi_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/ledc_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/pcnt_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/rmt_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/sdm_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/i2s_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/i2c_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/timer_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/lcd_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/mcpwm_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/mpi_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/sdmmc_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/touch_sensor_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/twai_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/wdt_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/dac_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/rtc_io_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/sdio_slave_periph.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/soc/esp32/power_supply_periph.c" ],
             "include_dirs": [ "include", "esp32", "esp32/include", "esp32/register" ]
         },
@@ -474,7 +474,7 @@
             "priv_reqs": [ "bootloader_support", "app_update", "soc", "esp_mm", "esp_driver_gpio" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/spi_flash/libspi_flash.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/spi_flash/libspi_flash.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/flash_brownout_hook.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_drivers.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_generic.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_issi.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_mxic.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_gd.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_winbond.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_boya.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_mxic_opi.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_chip_th.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/memspi_host_driver.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/cache_utils.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/flash_mmap.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/flash_ops.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_wrap.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/esp_flash_api.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/esp_flash_spi_init.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_os_func_app.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/spi_flash/spi_flash_os_func_noos.c" ],
             "include_dirs": [ "include" ]
         },
@@ -489,7 +489,7 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "file": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/esp-idf/xtensa/libxtensa.a",
+            "file": "E:/ESP32_VisualCode/Tram_do/build/esp-idf/xtensa/libxtensa.a",
             "sources": [ "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/eri.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/xt_trax.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/xtensa_context.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/xtensa_intr_asm.S", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/xtensa_intr.c", "C:/Users/Admin/esp/v5.5.1/esp-idf/components/xtensa/xtensa_vectors.S" ],
             "include_dirs": [ "esp32/include", "include", "deprecated_include" ]
         }
@@ -577,7 +577,7 @@
             "priv_reqs": [ "esp_driver_uart", "esp_driver_usb_serial_jtag" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build" ]
+            "include_dirs": [ "E:/ESP32_VisualCode/Tram_do/build" ]
         },
         "cxx": {
             "alias": "idf::cxx",
@@ -625,7 +625,7 @@
             "priv_reqs": [ "http_parser", "esp_timer", "lwip" ],
             "managed_reqs": [],
             "managed_priv_reqs": [],
-            "include_dirs": [ "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build", "esp-tls-crypto" ]
+            "include_dirs": [ "E:/ESP32_VisualCode/Tram_do/build", "esp-tls-crypto" ]
         },
         "esp_adc": {
             "alias": "idf::esp_adc",
@@ -1795,7 +1795,7 @@
             "alias": "idf::main",
             "target": "___idf_main",
             "prefix": "idf",
-            "dir": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/main",
+            "dir": "E:/ESP32_VisualCode/Tram_do/main",
             "lib": "__idf_main",
             "reqs": [ "spi_flash", "esp_driver_gpio", "esp_driver_spi", "esp_timer" ],
             "priv_reqs": [],
@@ -1806,10 +1806,10 @@
     },
     "debug_prefix_map_gdbinit": "",
     "gdbinit_files": {
-        "01_symbols": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/gdbinit/symbols",
-        "02_prefix_map": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/gdbinit/prefix_map",
-        "03_py_extensions": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/gdbinit/py_extensions",
-        "04_connect": "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/gdbinit/connect"
+        "01_symbols": "E:/ESP32_VisualCode/Tram_do/build/gdbinit/symbols",
+        "02_prefix_map": "E:/ESP32_VisualCode/Tram_do/build/gdbinit/prefix_map",
+        "03_py_extensions": "E:/ESP32_VisualCode/Tram_do/build/gdbinit/py_extensions",
+        "04_connect": "E:/ESP32_VisualCode/Tram_do/build/gdbinit/connect"
     },
     "debug_arguments_openocd": "-f board/esp32-wrover-kit-3.3v.cfg"
 }

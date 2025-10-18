@@ -10,18 +10,18 @@ if(NOT EXISTS "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader/subprojec
   file(MAKE_DIRECTORY "C:/Users/Admin/esp/v5.5.1/esp-idf/components/bootloader/subproject")
 endif()
 file(MAKE_DIRECTORY
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader"
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix"
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/tmp"
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp"
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src"
-  "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/tmp"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/src/bootloader-stamp"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/src"
+  "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "E:/ESP32_VisualCode/Do_an_dientu_Tram_do/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "E:/ESP32_VisualCode/Tram_do/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()
