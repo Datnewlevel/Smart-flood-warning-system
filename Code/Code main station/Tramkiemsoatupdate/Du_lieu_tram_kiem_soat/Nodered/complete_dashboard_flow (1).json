@@ -1,0 +1,102 @@
+[
+    {
+        "id": "ws_config_unique",
+        "type": "websocket-listener",
+        "path": "/ws/flood-monitor",
+        "wholemsg": "false"
+    },
+    {
+        "id": "dashboard_web_tab",
+        "type": "tab",
+        "label": "🌊 Dashboard Web",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "http_get_dashboard",
+        "type": "http in",
+        "z": "dashboard_web_tab",
+        "name": "GET /dashboard",
+        "url": "/dashboard",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 80,
+        "wires": [["html_dashboard_template"]]
+    },
+    {
+        "id": "html_dashboard_template",
+        "type": "template",
+        "z": "dashboard_web_tab",
+        "name": "HTML Dashboard",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"vi\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Giám Sát Lũ</title>\n    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n    <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\" />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body {\n            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            min-height: 100vh;\n        }\n        .header {\n            background: linear-gradient(90deg, #0891b2 0%, #06b6d4 100%);\n            color: white;\n            padding: 20px;\n            text-align: center;\n            box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n        }\n        .header h1 { font-size: 2em; font-weight: 600; }\n        .status-bar {\n            position: fixed;\n            top: 10px;\n            right: 10px;\n            padding: 8px 16px;\n            background: white;\n            border-radius: 20px;\n            box-shadow: 0 2px 8px rgba(0,0,0,0.2);\n            font-size: 14px;\n            font-weight: 600;\n            z-index: 9999;\n        }\n        .container { max-width: 1400px; margin: 30px auto; padding: 0 20px; }\n        .grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));\n            gap: 20px;\n        }\n        .card {\n            background: white;\n            border-radius: 15px;\n            padding: 25px;\n            box-shadow: 0 10px 30px rgba(0,0,0,0.2);\n            transition: transform 0.3s ease;\n        }\n        .card:hover { transform: translateY(-5px); }\n        .card-title {\n            color: #0891b2;\n            font-size: 1.3em;\n            font-weight: 600;\n            margin-bottom: 20px;\n        }\n        .alert-card {\n            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);\n            border-left: 5px solid #10b981;\n        }\n        .alert-card.warning {\n            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);\n            border-left: 5px solid #f59e0b;\n        }\n        .alert-card.danger {\n            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);\n            border-left: 5px solid #ef4444;\n        }\n        .alert-icon { font-size: 3em; text-align: center; animation: pulse 2s infinite; }\n        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }\n        .alert-text {\n            font-size: 1.8em;\n            font-weight: bold;\n            text-align: center;\n            margin: 20px 0;\n        }\n        .gauge-container { position: relative; width: 250px; height: 250px; margin: 20px auto; }\n        .gauge-value {\n            position: absolute;\n            top: 50%;\n            left: 50%;\n            transform: translate(-50%, -50%);\n            text-align: center;\n        }\n        .gauge-value .number { font-size: 3.5em; font-weight: bold; color: #0891b2; }\n        .gauge-value .unit { font-size: 1.3em; color: #64748b; }\n        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }\n        .info-item { background: #f1f5f9; padding: 15px; border-radius: 8px; }\n        .info-label { font-size: 0.9em; color: #64748b; margin-bottom: 5px; }\n        .info-value { font-size: 1.2em; font-weight: 600; color: #1e293b; }\n        .chart-container { height: 300px; }\n        .map-container { height: 400px; border-radius: 10px; overflow: hidden; }\n        .full-width { grid-column: 1 / -1; }\n        .status-dot {\n            display: inline-block;\n            width: 10px;\n            height: 10px;\n            border-radius: 50%;\n            margin-right: 6px;\n            animation: blink 1.5s infinite;\n        }\n        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }\n        .status-online { background: #10b981; }\n        .status-offline { background: #ef4444; }\n    </style>\n</head>\n<body>\n    <div class=\"status-bar\">\n        <span class=\"status-dot status-offline\" id=\"statusDot\"></span>\n        <span id=\"statusText\">Đang kết nối...</span>\n    </div>\n    <div class=\"header\">\n        <h1>🌊 Giám Sát Lũ - HiveMQ Cloud</h1>\n    </div>\n    <div class=\"container\">\n        <div class=\"grid\">\n            <div class=\"card alert-card\" id=\"alertCard\">\n                <div class=\"alert-icon\" id=\"alertIcon\">💧</div>\n                <div class=\"alert-text\" id=\"alertStatus\">Đang chờ dữ liệu...</div>\n            </div>\n            <div class=\"card\">\n                <div class=\"card-title\">💧 Mực Nước Hiện Tại</div>\n                <div class=\"gauge-container\">\n                    <canvas id=\"gaugeChart\"></canvas>\n                    <div class=\"gauge-value\">\n                        <div class=\"number\" id=\"waterLevel\">--</div>\n                        <div class=\"unit\">cm</div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"card\">\n                <div class=\"card-title\">📍 Thông Tin Trạm</div>\n                <div class=\"info-grid\">\n                    <div class=\"info-item\">\n                        <div class=\"info-label\">Mực nước</div>\n                        <div class=\"info-value\" id=\"infoLevel\">-- cm</div>\n                    </div>\n                    <div class=\"info-item\">\n                        <div class=\"info-label\">Trạm</div>\n                        <div class=\"info-value\">Triều Khúc</div>\n                    </div>\n                </div>\n                <div class=\"info-item\" style=\"margin-top: 15px;\">\n                    <div class=\"info-label\">Địa điểm</div>\n                    <div class=\"info-value\">Q. Thanh Xuân, Hà Nội</div>\n                </div>\n                <div class=\"info-item\" style=\"margin-top: 10px;\">\n                    <div class=\"info-label\">Cập nhật</div>\n                    <div class=\"info-value\" id=\"lastUpdate\">--</div>\n                </div>\n            </div>\n            <div class=\"card\">\n                <div class=\"card-title\">🗺️ Vị Trí</div>\n                <div class=\"map-container\" id=\"map\"></div>\n            </div>\n            <div class=\"card full-width\">\n                <div class=\"card-title\">📊 Lịch Sử (Real-time)</div>\n                <div class=\"chart-container\">\n                    <canvas id=\"historyChart\"></canvas>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script>\n        let gaugeChart, historyChart;\n        let historyData = [];\n        const maxDataPoints = 30;\n        \n        function connectWS() {\n            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';\n            const wsUrl = protocol + '//' + window.location.host + '/ws/flood-monitor';\n            \n            console.log('Connecting to:', wsUrl);\n            const ws = new WebSocket(wsUrl);\n            \n            ws.onopen = () => {\n                console.log('✅ Connected');\n                document.getElementById('statusDot').className = 'status-dot status-online';\n                document.getElementById('statusText').textContent = 'Đã kết nối';\n            };\n            \n            ws.onmessage = (event) => {\n                try {\n                    const data = JSON.parse(event.data);\n                    console.log('📥 Data:', data);\n                    updateDashboard(data);\n                } catch (e) {\n                    console.error('❌ Error:', e);\n                }\n            };\n            \n            ws.onerror = (error) => {\n                console.error('❌ WebSocket error:', error);\n                document.getElementById('statusDot').className = 'status-dot status-offline';\n                document.getElementById('statusText').textContent = 'Lỗi';\n            };\n            \n            ws.onclose = () => {\n                console.log('🔌 Disconnected, reconnecting...');\n                document.getElementById('statusDot').className = 'status-dot status-offline';\n                document.getElementById('statusText').textContent = 'Mất kết nối';\n                setTimeout(connectWS, 3000);\n            };\n        }\n        \n        // Init charts\n        gaugeChart = new Chart(document.getElementById('gaugeChart'), {\n            type: 'doughnut',\n            data: {\n                datasets: [{ data: [0, 100], backgroundColor: ['#10b981', '#e5e7eb'], borderWidth: 0 }]\n            },\n            options: {\n                responsive: true,\n                cutout: '75%',\n                plugins: { legend: { display: false }, tooltip: { enabled: false } }\n            }\n        });\n        \n        historyChart = new Chart(document.getElementById('historyChart'), {\n            type: 'line',\n            data: {\n                labels: [],\n                datasets: [{\n                    data: [],\n                    borderColor: '#06b6d4',\n                    backgroundColor: 'rgba(6, 182, 212, 0.1)',\n                    borderWidth: 3,\n                    tension: 0.4,\n                    fill: true\n                }]\n            },\n            options: {\n                responsive: true,\n                maintainAspectRatio: false,\n                plugins: { legend: { display: false } },\n                scales: {\n                    y: { beginAtZero: true, max: 100 },\n                    x: { display: true }\n                }\n            }\n        });\n        \n        // Init map\n        const map = L.map('map').setView([20.9967, 105.8045], 14);\n        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);\n        L.marker([20.9967, 105.8045]).addTo(map).bindPopup('<b>Trạm Triều Khúc</b>').openPopup();\n        L.circle([20.9967, 105.8045], { color: '#f59e0b', fillOpacity: 0.2, radius: 500 }).addTo(map);\n        \n        function updateDashboard(data) {\n            const level = parseFloat(data.water_level || 0);\n            const time = new Date().toLocaleTimeString('vi-VN');\n            \n            document.getElementById('waterLevel').textContent = level.toFixed(2);\n            document.getElementById('infoLevel').textContent = level.toFixed(1) + ' cm';\n            document.getElementById('lastUpdate').textContent = new Date().toLocaleString('vi-VN');\n            \n            let color = '#10b981', icon = '✅', status = 'BÌNH THƯỜNG', cardClass = 'card alert-card';\n            if (level > 70) {\n                color = '#ef4444'; icon = '🚨'; status = 'NGUY HIỂM!'; cardClass += ' danger';\n            } else if (level > 50) {\n                color = '#f59e0b'; icon = '⚡'; status = 'CẢNH BÁO!'; cardClass += ' warning';\n            } else if (level > 30) {\n                color = '#fbbf24'; icon = '💡'; status = 'CHÚ Ý'; cardClass += ' warning';\n            }\n            \n            document.getElementById('alertCard').className = cardClass;\n            document.getElementById('alertIcon').textContent = icon;\n            document.getElementById('alertStatus').textContent = status;\n            \n            const percentage = Math.min(level, 100);\n            gaugeChart.data.datasets[0].data = [percentage, 100 - percentage];\n            gaugeChart.data.datasets[0].backgroundColor = [color, '#e5e7eb'];\n            gaugeChart.update('none');\n            \n            historyData.push({ time, value: level });\n            if (historyData.length > maxDataPoints) historyData.shift();\n            historyChart.data.labels = historyData.map(d => d.time);\n            historyChart.data.datasets[0].data = historyData.map(d => d.value);\n            historyChart.update('none');\n        }\n        \n        connectWS();\n    </script>\n</body>\n</html>",
+        "output": "str",
+        "x": 360,
+        "y": 80,
+        "wires": [["http_send_response"]]
+    },
+    {
+        "id": "http_send_response",
+        "type": "http response",
+        "z": "dashboard_web_tab",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "link_receive",
+        "type": "link in",
+        "z": "dashboard_web_tab",
+        "name": "Nhận từ flow cũ",
+        "links": [],
+        "x": 135,
+        "y": 180,
+        "wires": [["format_websocket"]]
+    },
+    {
+        "id": "format_websocket",
+        "type": "function",
+        "z": "dashboard_web_tab",
+        "name": "Format WebSocket",
+        "func": "let waterLevel = 0;\n\nif (typeof msg.payload === 'object' && msg.payload.water_level !== undefined) {\n    waterLevel = parseFloat(msg.payload.water_level);\n} else if (typeof msg.payload === 'number') {\n    waterLevel = msg.payload;\n} else if (typeof msg.payload === 'string') {\n    try {\n        const data = JSON.parse(msg.payload);\n        waterLevel = parseFloat(data.water_level);\n    } catch (e) {\n        waterLevel = parseFloat(msg.payload);\n    }\n}\n\nconst data = {\n    water_level: waterLevel,\n    timestamp: new Date().toISOString()\n};\n\nmsg.payload = JSON.stringify(data);\nnode.status({fill:\"green\",shape:\"dot\",text:`${waterLevel.toFixed(1)} cm`});\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 180,
+        "wires": [["ws_send", "debug_ws"]]
+    },
+    {
+        "id": "ws_send",
+        "type": "websocket out",
+        "z": "dashboard_web_tab",
+        "name": "Send WebSocket",
+        "server": "ws_config_unique",
+        "client": "",
+        "x": 590,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "debug_ws",
+        "type": "debug",
+        "z": "dashboard_web_tab",
+        "name": "Debug WS",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 570,
+        "y": 240,
+        "wires": []
+    }
+]
