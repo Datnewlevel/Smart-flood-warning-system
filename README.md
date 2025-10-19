@@ -34,7 +34,7 @@ The system comprises two main stations:
 ### Block Diagrams
 | Measuring Station Block Diagram | Control Station Block Diagram |
 | :-----------------------------: | :---------------------------: |
-| ![Measuring Station Block Diagram](./so_do_khoi_Tramdo.PNG) | ![Control Station Block Diagram](./so_do_khoi_Tramkiemsoat.PNG) |
+| ![Measuring Station Block Diagram](./so_do_khoi_Tramdo.PNG) | ![Control Station Block Diagram](./so_do_khoi_tram_kiem_soat.PNG) |
 
 ### Measuring Station (Trạm Đo)
 | Schematic | PCB Layout | 3D View |
@@ -56,9 +56,9 @@ The system comprises two main stations:
 ## 📱 **Product Images**
 
 ### Physical Implementation
-| Measuring Station | Control Station |
-| :---------------: | :-------------: |
-| ![Measuring Station Product](./hinh_anh_san_pham_tramdo.jpg) | ![Control Station Product](./hinh_anh_san_pham_tramkiemsoat.jpg) |
+| Product Images |
+| :------------: |
+| ![Smart Flood Warning System Product](./hinh_anh_san_pham.jpg) |
 
 ---
 
@@ -75,12 +75,12 @@ The system integrates with a web-based monitoring solution using MQTT protocol:
 ### Web Interface
 | Web Server Dashboard |
 | :------------------: |
-| ![Web Server Interface](./anh_webserver.png) |
+| ![Web Server Interface](./pic_websever.PNG) |
 
 ### Telegram Integration
 | Telegram Bot Alerts |
 | :-----------------: |
-| ![Telegram Notifications](./anh_telegram.png) |
+| ![Telegram Notifications](./pic_send_mess_to_telegram.PNG) |
 
 ---
 
