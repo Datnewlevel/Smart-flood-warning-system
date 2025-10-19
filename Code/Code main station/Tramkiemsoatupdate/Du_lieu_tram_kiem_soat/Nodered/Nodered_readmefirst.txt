@@ -1,5 +1,0 @@
-flows.json (File json của 1 dự án khác cũng sử dụng hive mq như của tôi)
-Hinh_anh_mieu_ta.jpg (Hình ảnh giao diện web tôi mong muốn)
-Các widget sẽ sử dụng.txt (Các widget sẽ sử dụng)
-Error_nodered.txt (Dữ liệu error)
-Folder Hinh_anh (Hình ảnh để fix bug)
