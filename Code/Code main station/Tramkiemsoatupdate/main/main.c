@@ -34,7 +34,7 @@
 #define TELEGRAM_BOT_TOKEN "8348704801:AAGc3MpLxGPIrJRtbwKscWXDkrSzoU-m2UA"
 #define TELEGRAM_CHAT_ID "-4858686146"
 
-// Certificate data embedded from PEM file
+// Embedded certificate data from PEM file
 extern const uint8_t hivemq_isrg_root_x1_pem_start[] asm("_binary_hivemq_isrg_root_x1_pem_start");
 extern const uint8_t hivemq_isrg_root_x1_pem_end[]   asm("_binary_hivemq_isrg_root_x1_pem_end");
 
@@ -50,24 +50,29 @@ void ssd1306_clear(void);
 void ssd1306_display(void);
 esp_err_t ssd1306_print_str(uint8_t x, uint8_t y, const char *text, bool invert);
 
-    // WiFi Configuration
-#define WIFI_SSID      "SSID_your_wifi"
-#define WIFI_PASS      "Pass_your_wifi"
+// --- WiFi Definitions ---
+#define WIFI_SSID      "Your_SSID"
+#define WIFI_PASS      "Your_PASSWORD"
+
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
 static EventGroupHandle_t s_wifi_event_group;
 static int s_retry_num = 0;
 
-// MQTT Configuration
+// --- MQTT Definitions ---
 #define MQTT_BROKER_URL "mqtts://df973d5a054e4b299a614f0f9da093d2.s1.eu.hivemq.cloud"
 #define MQTT_BROKER_PORT 8883
 #define MQTT_USERNAME   "Dat_smart_flood"
 #define MQTT_PASSWORD   "23.4.2005Dat"
 #define MQTT_TOPIC      "esp32/tramkiemsoat/data"
+#define MQTT_CONTROL_TOPIC "esp32/tramkiemsoat/control"
 esp_mqtt_client_handle_t mqtt_client;
 
+// --- Control Variables ---
+static bool buzzer_enabled = true;
 
-// Pin Configuration
+
+// --- Pin Definitions ---
 // LoRa (SPI)
 #define LORA_HOST       SPI2_HOST
 #define LORA_MOSI       GPIO_NUM_11
@@ -85,7 +90,7 @@ esp_mqtt_client_handle_t mqtt_client;
 // Buzzer
 #define BUZZER_PIN      GPIO_NUM_5
 
-// LoRa Registers and Modes
+// --- LoRa Registers and Modes ---
 #define REG_OP_MODE              0x01
 #define REG_FIFO                 0x00
 #define REG_FRF_MSB              0x06
@@ -110,24 +115,26 @@ esp_mqtt_client_handle_t mqtt_client;
 #define MODE_RX_CONTINUOUS       0x05
 #define IRQ_RX_DONE_MASK         0x40
 
-// LoRa Addresses
+// --- LoRa Packet Addresses ---
 #define LORA_CONTROL_STATION_ADDRESS      0x01
 #define LORA_MEASUREMENT_STATION_ADDRESS  0x02
 
-// Global Variables
+// --- Global Variables ---
 spi_device_handle_t spi_handle_lora;
 static QueueHandle_t lora_rx_queue;
 static QueueHandle_t telegram_message_queue;
 
 // SSD1306 OLED
-#define SSD1306_SDA_GPIO GPIO_NUM_8    // I2C Data
-#define SSD1306_SCL_GPIO GPIO_NUM_9    // I2C Clock
-#define SSD1306_RESET_GPIO GPIO_NUM_NC  // No reset pin
+#define SSD1306_SDA_GPIO GPIO_NUM_8
+#define SSD1306_SCL_GPIO GPIO_NUM_9
+#define SSD1306_RESET_GPIO GPIO_NUM_NC
 static SSD1306_t ssd1306_dev;
 static bool oled_initialized = false;
 
 
-// WiFi Helper Functions
+// =========================================================================
+// HELPER FUNCTIONS: WIFI
+// =========================================================================
 static void wifi_event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data) {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
@@ -200,24 +207,83 @@ void wifi_init_sta(void) {
     }
 }
 
-// MQTT Helper Functions
+// =========================================================================
+// HELPER FUNCTIONS: MQTT
+// =========================================================================
 static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data) {
     ESP_LOGD(TAG, "Event dispatched from event loop base=%s, event_id=%ld", base, event_id);
     esp_mqtt_event_handle_t event = event_data;
     switch ((esp_mqtt_event_id_t)event_id) {
     case MQTT_EVENT_CONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_CONNECTED");
+        
+        int msg_id = esp_mqtt_client_subscribe(mqtt_client, MQTT_CONTROL_TOPIC, 1);
+        ESP_LOGI(TAG, "Subscribed to control topic, msg_id=%d", msg_id);
+        
         ssd1306_clear();
         ssd1306_print_str(15, 10, "MQTT Connected", false);
         ssd1306_display();
         vTaskDelay(pdMS_TO_TICKS(2000));
         break;
+        
     case MQTT_EVENT_DISCONNECTED:
         ESP_LOGI(TAG, "MQTT_EVENT_DISCONNECTED");
         break;
+        
+    case MQTT_EVENT_SUBSCRIBED:
+        ESP_LOGI(TAG, "MQTT_EVENT_SUBSCRIBED, msg_id=%d", event->msg_id);
+        break;
+        
     case MQTT_EVENT_PUBLISHED:
         ESP_LOGI(TAG, "MQTT_EVENT_PUBLISHED, msg_id=%d", event->msg_id);
         break;
+        
+    case MQTT_EVENT_DATA:
+        ESP_LOGI(TAG, "MQTT_EVENT_DATA");
+        ESP_LOGI(TAG, "TOPIC=%.*s", event->topic_len, event->topic);
+        ESP_LOGI(TAG, "DATA=%.*s", event->data_len, event->data);
+        
+        if (strncmp(event->topic, MQTT_CONTROL_TOPIC, event->topic_len) == 0) {
+            char command[32];
+            snprintf(command, sizeof(command), "%.*s", event->data_len, event->data);
+            ESP_LOGI(TAG, "🎛️ Control command received: %s", command);
+            
+            if (strcmp(command, "buzzer_on") == 0) {
+                buzzer_enabled = true;
+                ESP_LOGI(TAG, "🔊 Buzzer ENABLED");
+                
+                esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, "{\"buzzer_status\":\"enabled\"}", 0, 1, 0);
+                
+                if (oled_initialized) {
+                    ssd1306_clear();
+                    ssd1306_print_str(15, 20, "BUZZER: ON", false);
+                    ssd1306_display();
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                }
+                
+            } else if (strcmp(command, "buzzer_off") == 0) {
+                buzzer_enabled = false;
+                ESP_LOGI(TAG, "🔇 Buzzer DISABLED");
+                
+                esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, "{\"buzzer_status\":\"disabled\"}", 0, 1, 0);
+                
+                if (oled_initialized) {
+                    ssd1306_clear();
+                    ssd1306_print_str(15, 20, "BUZZER: OFF", false);
+                    ssd1306_display();
+                    vTaskDelay(pdMS_TO_TICKS(2000));
+                }
+                
+            } else if (strcmp(command, "status") == 0) {
+                char status_msg[100];
+                snprintf(status_msg, sizeof(status_msg), "{\"buzzer_status\":\"%s\"}", 
+                        buzzer_enabled ? "enabled" : "disabled");
+                esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, status_msg, 0, 1, 0);
+                ESP_LOGI(TAG, "📊 Status sent: buzzer is %s", buzzer_enabled ? "enabled" : "disabled");
+            }
+        }
+        break;
+        
     default:
         ESP_LOGI(TAG, "Other event id:%d", event->event_id);
         break;
@@ -237,7 +303,9 @@ void mqtt_app_start(void) {
     esp_mqtt_client_start(mqtt_client);
 }
 
-// Telegram Helper Functions
+// =========================================================================
+// HELPER FUNCTIONS: TELEGRAM
+// =========================================================================
 esp_err_t _http_event_handler(esp_http_client_event_t *evt)
 {
     switch(evt->event_id) {
@@ -256,7 +324,6 @@ esp_err_t _http_event_handler(esp_http_client_event_t *evt)
         case HTTP_EVENT_ON_DATA:
             ESP_LOGD(TAG, "HTTP_EVENT_ON_DATA, len=%d", evt->data_len);
             if (!esp_http_client_is_chunked_response(evt->client)) {
-                // Log the response from Telegram API for debugging
                 ESP_LOGI(TAG, "Telegram Response: %.*s", evt->data_len, (char*)evt->data);
             }
             break;
@@ -306,7 +373,9 @@ void send_telegram_message(const char *message) {
 
 
 
-// LoRa Helper Functions
+// =========================================================================
+// HELPER FUNCTIONS: LORA
+// =========================================================================
 
 void lora_write_reg(uint8_t reg, uint8_t val) {
     uint8_t tx_data[2] = {reg | 0x80, val};
@@ -340,15 +409,21 @@ void lora_set_frequency(uint64_t freq) {
     lora_write_reg(REG_FRF_LSB, (uint8_t)(frf >> 0));
 }
 
+// ============================================
+// ✅ HELPER FUNCTIONS - CRITICAL FOR RX/TX SYNC
+// ============================================
+
+// Enable CRC for packet verification (CRITICAL for RX/TX sync)
 void lora_enable_crc(void) {
     lora_write_reg(REG_MODEM_CONFIG_2, lora_read_reg(REG_MODEM_CONFIG_2) | 0x04);
     ESP_LOGI(TAG, "CRC enabled: 0x%02X", lora_read_reg(REG_MODEM_CONFIG_2));
 }
 
+// Set TX power level (2-17 dBm for PA_BOOST)
 void lora_set_tx_power(int level) {
     if (level < 2) level = 2;
     else if (level > 17) level = 17;
-    lora_write_reg(REG_PA_CONFIG, 0x80 | (level - 2));
+    lora_write_reg(REG_PA_CONFIG, 0x80 | (level - 2)); // PA_BOOST
     ESP_LOGI(TAG, "TX Power set to %d dBm: REG_PA_CONFIG=0x%02X", level, lora_read_reg(REG_PA_CONFIG));
 }
 
@@ -392,7 +467,7 @@ void lora_init() {
     }
     ESP_LOGI(TAG, "LoRa version: 0x%02X", version);
 
-    // LoRa configuration parameters
+    // Configuration from PDF guide
     lora_write_reg(0x39, 0x34);
     lora_write_reg(0x20, 0x00);
     lora_write_reg(0x21, 0x08);
@@ -404,8 +479,13 @@ void lora_init() {
     lora_write_reg(REG_MODEM_CONFIG_1, 0x72);
     lora_write_reg(REG_MODEM_CONFIG_2, 0x74);
 
+    // ✅ CRITICAL: Enable CRC (must match transmitter!)
     lora_enable_crc();
-    lora_set_tx_power(14);
+
+    // ✅ Set TX/RX power using helper function
+    // Using 14 dBm for safety with spring antenna
+    lora_set_tx_power(14); // 14 dBm (safe for most antennas)
+    // For max range with good antenna, use: lora_set_tx_power(17);
 
     lora_write_reg(REG_OP_MODE, MODE_STDBY | MODE_LORA);
     vTaskDelay(pdMS_TO_TICKS(10));
@@ -426,10 +506,12 @@ static void IRAM_ATTR lora_dio0_isr_handler(void* arg) {
     xQueueSendFromISR(lora_rx_queue, &gpio_num, NULL);
 }
 
-// SSD1306 OLED Functions
+// =========================================================================
+// SSD1306 WRAPPER FUNCTIONS
+// =========================================================================
 
 void init_ssd1306(void) {
-    ESP_LOGI(TAG, "Initializing SSD1306 OLED");
+    ESP_LOGI(TAG, "=== Initializing SSD1306 OLED ===");
     ESP_LOGI(TAG, "I2C Pins: SDA=%d, SCL=%d, Address=0x3C", SSD1306_SDA_GPIO, SSD1306_SCL_GPIO);
     
     oled_initialized = false;
@@ -441,9 +523,11 @@ void init_ssd1306(void) {
         gpio_reset_pin(SSD1306_SCL_GPIO);
         vTaskDelay(pdMS_TO_TICKS(100));
         
+        ESP_LOGI(TAG, "Initializing I2C master bus...");
         i2c_master_init(&ssd1306_dev, SSD1306_SDA_GPIO, SSD1306_SCL_GPIO, SSD1306_RESET_GPIO);
         vTaskDelay(pdMS_TO_TICKS(300));
         
+        ESP_LOGI(TAG, "Initializing SSD1306 display...");
         ssd1306_init(&ssd1306_dev, 128, 64);
         vTaskDelay(pdMS_TO_TICKS(200));
         
@@ -454,12 +538,12 @@ void init_ssd1306(void) {
         vTaskDelay(pdMS_TO_TICKS(50));
         
         oled_initialized = true;
-        ESP_LOGI(TAG, "SSD1306 initialized successfully on attempt %d", retry + 1);
+        ESP_LOGI(TAG, "✅ SSD1306 initialized successfully on attempt %d", retry + 1);
         return;
     }
     
-    ESP_LOGE(TAG, "Failed to initialize SSD1306 after 3 attempts");
-    ESP_LOGE(TAG, "OLED will be disabled to prevent system hang");
+    ESP_LOGE(TAG, "❌ Failed to initialize SSD1306 after 3 attempts");
+    ESP_LOGE(TAG, "❌ OLED will be disabled to prevent system hang");
     oled_initialized = false;
 }
 
@@ -495,21 +579,30 @@ esp_err_t ssd1306_print_str(uint8_t x, uint8_t y, const char *text, bool invert)
     return ESP_OK;
 }
 
-// Main Logic Functions
+// =========================================================================
+// MAIN LOGIC
+// =========================================================================
 
 void beep(int duration_ms) {
+    // ✅ Kiểm tra flag điều khiển từ MQTT
+    if (!buzzer_enabled) {
+        ESP_LOGD(TAG, "🔇 Beep skipped - buzzer disabled via MQTT");
+        return;  // Bỏ qua beep nếu bị tắt
+    }
+    
+    ESP_LOGD(TAG, "🔊 Beep %dms - buzzer enabled", duration_ms);
     gpio_set_level(BUZZER_PIN, 1);
     vTaskDelay(pdMS_TO_TICKS(duration_ms));
     gpio_set_level(BUZZER_PIN, 0);
 }
 
 void handle_water_level(float water_level) {
-
+    // Reset LEDs
     gpio_set_level(LED_GREEN, 0);
     gpio_set_level(LED_YELLOW, 0);
     gpio_set_level(LED_RED, 0);
 
-
+    // Prepare data and level string
     int new_warning_level;
     char level_str[16];
     char line1[16];
@@ -517,13 +610,13 @@ void handle_water_level(float water_level) {
 
     static int last_warning_level = 0;
 
-
-    if (water_level > 70.0) {
+    // Xác định trạng thái mực nước
+    if (water_level > 20.0) {
         strcpy(level_str, "NGUY HIEM!");
         new_warning_level = 3;
         ESP_LOGE(TAG, "Muc nuoc NGUY HIEM: %.2f", water_level);
         gpio_set_level(LED_RED, 1);
-    } else if (water_level > 50.0) {
+    } else if (water_level >10.0) {
         strcpy(level_str, "CANH BAO!");
         new_warning_level = 2;
         ESP_LOGW(TAG, "Muc nuoc CANH BAO: %.2f", water_level);
@@ -535,18 +628,23 @@ void handle_water_level(float water_level) {
         gpio_set_level(LED_GREEN, 1);
     }
 
+    // ✅ CHỈ PHÁT ÂM THANH VÀ GỬI TELEGRAM KHI THAY ĐỔI TRẠNG THÁI
     if (new_warning_level != last_warning_level) {
-        ESP_LOGI(TAG, "Status changed: %d -> %d", last_warning_level, new_warning_level);
+        // Phát âm thanh tương ứng với trạng thái MỚI
+        ESP_LOGI(TAG, "⚠️ Trạng thái thay đổi: %d -> %d", last_warning_level, new_warning_level);
         
         if (new_warning_level == 3) {
-            dfplayer_play(3);
+            dfplayer_play(3);  // File 003.mp3 - Nguy hiểm
         } else if (new_warning_level == 2) {
-            dfplayer_play(2);
+            dfplayer_play(2);  // File 002.mp3 - Cảnh báo
         } else {
-            dfplayer_play(1);
+            dfplayer_play(1);  // File 001.mp3 - Bình thường
         }
         
+        // Delay nhỏ để DFPlayer xử lý lệnh
         vTaskDelay(pdMS_TO_TICKS(100));
+        
+        // Gửi thông báo đến Telegram
         char *telegram_message = malloc(150);
         if (telegram_message != NULL) {
             snprintf(telegram_message, 150, 
@@ -559,31 +657,36 @@ void handle_water_level(float water_level) {
                 ESP_LOGE(TAG, "Failed to post message to Telegram queue");
                 free(telegram_message);
             } else {
-                ESP_LOGI(TAG, "Telegram message queued");
+                ESP_LOGI(TAG, "✅ Telegram message queued");
             }
         }
     } else {
-        ESP_LOGD(TAG, "Water level unchanged: %.1fcm (%s)", water_level, level_str);
+        // Không thay đổi trạng thái - chỉ log
+        ESP_LOGD(TAG, "Mực nước không đổi trạng thái: %.1fcm (%s)", water_level, level_str);
     }
     
+    // Cập nhật trạng thái cuối cùng
     last_warning_level = new_warning_level;
 
+    // Display on OLED (với error handling)
     if (oled_initialized) {
+        ESP_LOGD(TAG, "Updating OLED display...");
         ssd1306_clear();
         ssd1306_print_str(5, 10, line1, false);
         ssd1306_print_str(28, 37, level_str, false);
         ssd1306_display();
+        ESP_LOGD(TAG, "OLED updated successfully");
     } else {
         ESP_LOGW(TAG, "OLED not initialized, skipping display update");
     }
 
-
+    // Publish to MQTT
     char json_payload[100];
     snprintf(json_payload, sizeof(json_payload), "{\"water_level\": %.2f}", water_level);
     esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, json_payload, 0, 1, 0);
     ESP_LOGI(TAG, "Sent publish successful");
 
-
+    // Các trạng thái đã được xử lý ở trên (LED và âm thanh)
 }
 
 void telegram_send_task(void *pvParameters) {
@@ -594,7 +697,7 @@ void telegram_send_task(void *pvParameters) {
         if (xQueueReceive(telegram_message_queue, &message_to_send, portMAX_DELAY)) {
             ESP_LOGI(TAG, "Received message for Telegram: %s", message_to_send);
 
-
+            // Check for WiFi connection before attempting to send
             EventBits_t bits = xEventGroupGetBits(s_wifi_event_group);
             if (bits & WIFI_CONNECTED_BIT) {
                 send_telegram_message(message_to_send);
@@ -602,7 +705,7 @@ void telegram_send_task(void *pvParameters) {
                 ESP_LOGE(TAG, "WiFi not connected. Cannot send Telegram message.");
             }
 
-
+            // IMPORTANT: Free the memory that was allocated in handle_water_level
             free(message_to_send);
         }
     }
@@ -612,12 +715,15 @@ void lora_rx_task(void *pvParameters) {
     ESP_LOGI(TAG, "LoRa RX task started.");
     uint32_t io_num;
 
+    ESP_LOGI(TAG, "DIO0 current level: %d", gpio_get_level(LORA_DIO0));
+    
+    // ⚠️ DEBUG: Kiểm tra định kỳ trạng thái LoRa
     TickType_t last_check = xTaskGetTickCount();
     
     while (1) {
-        if (xQueueReceive(lora_rx_queue, &io_num, pdMS_TO_TICKS(5000))) {
+        if (xQueueReceive(lora_rx_queue, &io_num, pdMS_TO_TICKS(5000))) {  // Timeout 5s thay vì chờ vô hạn
             ESP_LOGI(TAG, "LoRa packet received!");
-            beep(500);
+            beep(500); // Notify on any packet
             
             lora_write_reg(REG_OP_MODE, MODE_STDBY | MODE_LORA);
             
@@ -633,7 +739,7 @@ void lora_rx_task(void *pvParameters) {
             uint8_t fifo_rx_addr = lora_read_reg(REG_FIFO_RX_BASE_ADDR);
             lora_write_reg(REG_FIFO_ADDR_PTR, fifo_rx_addr);
 
-            if (packet_len < 4) {
+            if (packet_len < 4) { 
                 ESP_LOGW(TAG, "Received packet is too short (len=%d). Discarding.", packet_len);
             } else {
                 uint8_t recipient = lora_read_reg(REG_FIFO);
@@ -652,7 +758,7 @@ void lora_rx_task(void *pvParameters) {
                     }
                     ESP_LOGI(TAG, "Received Payload: %s", payload_buffer);
 
-
+                    // The measurement station now sends "Muc nuoc: <value>"
                     char *payload_start = strstr(payload_buffer, "Muc nuoc: ");
                     if (!payload_start) {
                         payload_start = strstr(payload_buffer, "Muc nuoc:");
@@ -662,7 +768,7 @@ void lora_rx_task(void *pvParameters) {
                         float water_level;
                         if (sscanf(payload_start, "Muc nuoc: %f", &water_level) == 1 ||
                             sscanf(payload_start, "Muc nuoc:%f", &water_level) == 1) {
-                            ESP_LOGI(TAG, "Parsed water level: %.2f cm", water_level);
+                            ESP_LOGI(TAG, "✅ Parsed water level: %.2f cm", water_level);
                             handle_water_level(water_level);
                         } else {
                             ESP_LOGW(TAG, "Failed to parse: %s", payload_buffer);
@@ -748,9 +854,12 @@ void app_main(void) {
     gpio_set_level(LED_RED, 0);
     gpio_set_level(BUZZER_PIN, 0);
 
-    ESP_LOGI(TAG, "Initializing OLED");
+    // Initialize OLED
+    ESP_LOGI(TAG, "=== STEP 1: Initializing OLED ===");
     init_ssd1306();
     
+    // Test communication
+    ESP_LOGI(TAG, "Testing OLED communication...");
     ssd1306_clear();
     vTaskDelay(pdMS_TO_TICKS(50));
     
@@ -758,42 +867,48 @@ void app_main(void) {
     vTaskDelay(pdMS_TO_TICKS(50));
     
     ssd1306_display();
-    vTaskDelay(pdMS_TO_TICKS(2000));
+    vTaskDelay(pdMS_TO_TICKS(2000));  // Hiển thị lâu hơn để kiểm tra
 
     
-    ESP_LOGI(TAG, "Initializing DFPlayer");
+    // ✅ KHỞI TẠO DFPLAYER TRƯỚC, TRƯỚC KHI WIFI/MQTT!
+    ESP_LOGI(TAG, "=== INITIALIZING DFPLAYER ===");
     ssd1306_clear();
     ssd1306_print_str(10, 10, "Init DFPlayer...", false);
     ssd1306_display();
 
     esp_err_t dfp_ret = dfplayer_init();
     if (dfp_ret != ESP_OK) {
-        ESP_LOGE(TAG, "DFPlayer init FAILED!");
-        beep(2000);
+        ESP_LOGE(TAG, "❌ DFPlayer init FAILED!");
+        beep(2000); // Beep dài báo lỗi
     } else {
-        ESP_LOGI(TAG, "DFPlayer init OK");
+        ESP_LOGI(TAG, "✅ DFPlayer init OK");
         
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        // Đặt âm lượng - delay lâu hơn cho DFPlayer ổn định
+        vTaskDelay(pdMS_TO_TICKS(1000)); // Đợi DFPlayer khởi tạo hoàn toàn
         dfplayer_set_volume(25);
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(1000)); // Đợi lệnh volume được xử lý
         
-        ESP_LOGI(TAG, "Playing startup sound");
+        // Phát file 004.mp3 khi khởi động
+        ESP_LOGI(TAG, "=== Playing startup sound ===");
         dfplayer_play(4);
-        vTaskDelay(pdMS_TO_TICKS(2000));
+        vTaskDelay(pdMS_TO_TICKS(2000)); // Delay lâu hơn để đảm bảo âm thanh phát
+        ESP_LOGI(TAG, "=== Startup sound played ===");
     }
 
-
+    // Connect to WiFi
     ssd1306_clear();
     ssd1306_print_str(10, 10, "Connecting WiFi...", false);
     ssd1306_display();
     wifi_init_sta();
 
-
+    // Connect to MQTT
     ssd1306_clear();
     ssd1306_print_str(10, 10, "Connecting MQTT...", false);
     ssd1306_display();
     mqtt_app_start();
-    vTaskDelay(pdMS_TO_TICKS(2000));
+    vTaskDelay(pdMS_TO_TICKS(2000)); // Wait a bit for connection
+    
+    // Startup blink sequence
     for (int i = 0; i < 3; i++) {
         gpio_set_level(LED_GREEN, 1);
         gpio_set_level(LED_YELLOW, 1);
@@ -805,11 +920,11 @@ void app_main(void) {
         vTaskDelay(pdMS_TO_TICKS(250));
     }
 
-
+    // ✅ SAU ĐÓ MỚI KHỞI TẠO LORA
     lora_init();
     beep(1000);
 
-
+    // Configure interrupt for LoRa
     lora_rx_queue = xQueueCreate(10, sizeof(uint32_t));
     telegram_message_queue = xQueueCreate(5, sizeof(char *));
     gpio_set_direction(LORA_DIO0, GPIO_MODE_INPUT);
@@ -817,11 +932,11 @@ void app_main(void) {
     gpio_install_isr_service(0);
     gpio_isr_handler_add(LORA_DIO0, lora_dio0_isr_handler, (void*) LORA_DIO0);
 
-
+    // Create LoRa task
     xTaskCreate(lora_rx_task, "lora_rx_task", 4096, NULL, 10, NULL);
     xTaskCreate(telegram_send_task, "telegram_send_task", 8192, NULL, 5, NULL);
 
-
+    // Put LoRa into receive mode
     lora_enter_rx_mode();
 
     ESP_LOGI(TAG, "Initialization complete. Waiting for LoRa packets...");
@@ -829,7 +944,7 @@ void app_main(void) {
     ssd1306_print_str(5, 10, "Cho tin hieu...", false);
     ssd1306_display();
 
-
+    // Safely handle WDT for the main task
     if (esp_task_wdt_status(NULL) == ESP_OK) {
         ESP_LOGI(TAG, "Main task is subscribed to WDT. Unsubscribing.");
         esp_task_wdt_delete(NULL);
