@@ -1,128 +1,128 @@
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/xtensa/libxtensa.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/cxx/libcxx.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/newlib/libnewlib.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/freertos/libfreertos.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_hw_support/libesp_hw_support.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/heap/libheap.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/log/liblog.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/soc/libsoc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/hal/libhal.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_rom/libesp_rom.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_common/libesp_common.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_system/libesp_system.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/xtensa/libxtensa.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/spi_flash/libspi_flash.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/bootloader_support/libbootloader_support.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/libmbedtls.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_pm/libesp_pm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_timer/libesp_timer.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/lwip/liblwip.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/vfs/libvfs.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_uart/libesp_driver_uart.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_ringbuf/libesp_ringbuf.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_mm/libesp_mm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/vfs/libvfs.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_vfs_console/libesp_vfs_console.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedtls.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedx509.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/libp256m.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_security/libesp_security.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/efuse/libefuse.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_partition/libesp_partition.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/app_update/libapp_update.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_app_format/libesp_app_format.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_mm/libesp_mm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_http_client/libesp_http_client.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_event/libesp_event.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/tcp_transport/libtcp_transport.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp-tls/libesp-tls.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/http_parser/libhttp_parser.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/nvs_flash/libnvs_flash.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mbedtls/libmbedtls.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_wifi/libesp_wifi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_phy/libesp_phy.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_netif/libesp_netif.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/wpa_supplicant/libwpa_supplicant.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_coex/libesp_coex.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_security/libesp_security.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/pthread/libpthread.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_timer/libesp_timer.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_pm/libesp_pm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_app_format/libesp_app_format.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/app_update/libapp_update.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_partition/libesp_partition.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/efuse/libefuse.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/bootloader_support/libbootloader_support.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/spi_flash/libspi_flash.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_system/libesp_system.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_common/libesp_common.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_rom/libesp_rom.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/hal/libhal.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/log/liblog.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/heap/libheap.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/soc/libsoc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_hw_support/libesp_hw_support.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/freertos/libfreertos.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/newlib/libnewlib.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/pthread/libpthread.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/cxx/libcxx.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/nvs_flash/libnvs_flash.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_event/libesp_event.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_ringbuf/libesp_ringbuf.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_uart/libesp_driver_uart.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_vfs_console/libesp_vfs_console.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/lwip/liblwip.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_netif/libesp_netif.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_phy/libesp_phy.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/wpa_supplicant/libwpa_supplicant.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_coex/libesp_coex.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_wifi/libesp_wifi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/http_parser/libhttp_parser.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp-tls/libesp-tls.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/tcp_transport/libtcp_transport.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mqtt/libmqtt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_spi/libesp_driver_spi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_http_client/libesp_http_client.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_gptimer/libesp_driver_gptimer.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2s/libesp_driver_i2s.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/sdmmc/libsdmmc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/sdmmc/libsdmmc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_spi/libesp_driver_spi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_ledc/libesp_driver_ledc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_twai/libesp_driver_twai.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/driver/libdriver.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_gptimer/libesp_driver_gptimer.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2s/libesp_driver_i2s.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_ledc/libesp_driver_ledc.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_driver_twai/libesp_driver_twai.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/ssd1306/libssd1306.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/driver/libdriver.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/espressif__cjson/libespressif__cjson.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/main/libmain.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/mqtt/libmqtt.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/ssd1306/libssd1306.a
-E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/espressif__cjson/libespressif__cjson.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/xtensa/libxtensa.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/cxx/libcxx.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/newlib/libnewlib.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/freertos/libfreertos.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_hw_support/libesp_hw_support.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/heap/libheap.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/log/liblog.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/soc/libsoc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/hal/libhal.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_rom/libesp_rom.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_common/libesp_common.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_system/libesp_system.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/xtensa/libxtensa.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/spi_flash/libspi_flash.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/bootloader_support/libbootloader_support.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/libmbedtls.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_pm/libesp_pm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_timer/libesp_timer.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/lwip/liblwip.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/vfs/libvfs.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_uart/libesp_driver_uart.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_ringbuf/libesp_ringbuf.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_mm/libesp_mm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/vfs/libvfs.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_vfs_console/libesp_vfs_console.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedtls.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedx509.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/library/libmbedcrypto.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/3rdparty/everest/libeverest.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/mbedtls/3rdparty/p256-m/libp256m.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_security/libesp_security.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/efuse/libefuse.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_partition/libesp_partition.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/app_update/libapp_update.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_app_format/libesp_app_format.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_mm/libesp_mm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_http_client/libesp_http_client.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_event/libesp_event.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/tcp_transport/libtcp_transport.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp-tls/libesp-tls.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/http_parser/libhttp_parser.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/nvs_flash/libnvs_flash.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mbedtls/libmbedtls.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_wifi/libesp_wifi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_phy/libesp_phy.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_netif/libesp_netif.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/wpa_supplicant/libwpa_supplicant.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_coex/libesp_coex.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_security/libesp_security.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/pthread/libpthread.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_gpio/libesp_driver_gpio.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_timer/libesp_timer.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_pm/libesp_pm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_app_format/libesp_app_format.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_bootloader_format/libesp_bootloader_format.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/app_update/libapp_update.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_partition/libesp_partition.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/efuse/libefuse.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/bootloader_support/libbootloader_support.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/spi_flash/libspi_flash.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_system/libesp_system.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_common/libesp_common.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_rom/libesp_rom.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/hal/libhal.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/log/liblog.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/heap/libheap.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/soc/libsoc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_hw_support/libesp_hw_support.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/freertos/libfreertos.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/newlib/libnewlib.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/pthread/libpthread.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/cxx/libcxx.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/nvs_flash/libnvs_flash.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_event/libesp_event.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_ringbuf/libesp_ringbuf.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_uart/libesp_driver_uart.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_usb_serial_jtag/libesp_driver_usb_serial_jtag.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_vfs_console/libesp_vfs_console.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/lwip/liblwip.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_netif/libesp_netif.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_phy/libesp_phy.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/wpa_supplicant/libwpa_supplicant.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_coex/libesp_coex.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_wifi/libesp_wifi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/http_parser/libhttp_parser.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp-tls/libesp-tls.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/tcp_transport/libtcp_transport.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mqtt/libmqtt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_spi/libesp_driver_spi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_http_client/libesp_http_client.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_gptimer/libesp_driver_gptimer.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2s/libesp_driver_i2s.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/sdmmc/libsdmmc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/sdmmc/libsdmmc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_spi/libesp_driver_spi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_ledc/libesp_driver_ledc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_twai/libesp_driver_twai.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/driver/libdriver.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_pcnt/libesp_driver_pcnt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_gptimer/libesp_driver_gptimer.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_mcpwm/libesp_driver_mcpwm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2s/libesp_driver_i2s.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdmmc/libesp_driver_sdmmc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdspi/libesp_driver_sdspi.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_rmt/libesp_driver_rmt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_tsens/libesp_driver_tsens.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_sdm/libesp_driver_sdm.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_i2c/libesp_driver_i2c.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_ledc/libesp_driver_ledc.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_driver_twai/libesp_driver_twai.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/ssd1306/libssd1306.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/driver/libdriver.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/espressif__cjson/libespressif__cjson.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/main/libmain.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/mqtt/libmqtt.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/ssd1306/libssd1306.a
+D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/espressif__cjson/libespressif__cjson.a

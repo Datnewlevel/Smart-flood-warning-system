@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/CMakeFiles/bootloader"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/CMakeFiles/bootloader.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 

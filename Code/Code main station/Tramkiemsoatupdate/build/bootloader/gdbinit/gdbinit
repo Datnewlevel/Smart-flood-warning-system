@@ -1,2 +1,2 @@
-source E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/gdbinit/symbols
-source E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/gdbinit/connect
+source D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader/gdbinit/symbols
+source D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader/gdbinit/connect

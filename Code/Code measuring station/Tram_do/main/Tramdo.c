@@ -238,7 +238,7 @@ float measure_distance(void) {
         }
 
     next_sample:
-        vTaskDelay(pdMS_TO_TICKS(50)); // Short delay between samples
+        vTaskDelay(pdMS_TO_TICKS(200)); // Delay 200ms between samples for better averaging
     }
 
     // Power off the sensor
@@ -351,8 +351,9 @@ void measurement_task(void *pvParameters) {
     ESP_LOGI(TAG, "║   AUTOMATIC CALIBRATION STARTING...   ║");
     ESP_LOGI(TAG, "╚════════════════════════════════════════╝");
     ESP_LOGI(TAG, "");
+    ESP_LOGI(TAG, "⏳ Waiting 5 seconds for system to stabilize...");
     
-    vTaskDelay(pdMS_TO_TICKS(2000)); // Wait 2 seconds before starting calibration
+    vTaskDelay(pdMS_TO_TICKS(5000)); // Wait 5 seconds to avoid power-on oscillations
     
     if (!calibrate_reference_height()) {
         ESP_LOGE(TAG, "FATAL: Calibration failed! System halted.");
@@ -383,20 +384,20 @@ void measurement_task(void *pvParameters) {
         if (distance > 0 && distance < 450) {
             ESP_LOGI(TAG, "Distance: %.2f cm, Water Level: %.2f cm (Ref: %.2f cm)", 
                      distance, water_level, REFERENCE_HEIGHT);
-            ESP_LOGI(TAG, "Nhay den GREEN mot lan.");
+            ESP_LOGI(TAG, "Blink GREEN LED once (valid measurement)");
             gpio_set_level(LED_GREEN_PIN, 1);
             vTaskDelay(pdMS_TO_TICKS(1000));
             gpio_set_level(LED_GREEN_PIN, 0);
 
-            char payload[32];
+            char payload[64];
             int payload_len = snprintf(payload, sizeof(payload), "Muc nuoc: %.2f", water_level);
             if (lora_send_packet(LORA_CONTROL_STATION_ADDRESS, LORA_MEASUREMENT_STATION_ADDRESS, (uint8_t *)payload, payload_len)) {
-                ESP_LOGI(TAG, "LoRa sent successfully. Blinking RED once.");
+                ESP_LOGI(TAG, "LoRa packet sent successfully. Blink RED once.");
                 gpio_set_level(LED_RED_PIN, 1);
                 vTaskDelay(pdMS_TO_TICKS(1000));
                 gpio_set_level(LED_RED_PIN, 0);
             } else {
-                ESP_LOGE(TAG, "LoRa send failed. Blinking RED twice.");
+                ESP_LOGE(TAG, "LoRa send failed. Blink RED twice.");
                 gpio_set_level(LED_RED_PIN, 1);
                 vTaskDelay(pdMS_TO_TICKS(250));
                 gpio_set_level(LED_RED_PIN, 0);
@@ -406,8 +407,7 @@ void measurement_task(void *pvParameters) {
                 gpio_set_level(LED_RED_PIN, 0);
             }
         } else {
-            // Failed Measurement: 2 green blinks
-            ESP_LOGW(TAG, "Measurement failed. Blinking GREEN twice.");
+            ESP_LOGW(TAG, "Measurement failed. Blink GREEN twice.");
             gpio_set_level(LED_GREEN_PIN, 1);
             vTaskDelay(pdMS_TO_TICKS(250));
             gpio_set_level(LED_GREEN_PIN, 0);

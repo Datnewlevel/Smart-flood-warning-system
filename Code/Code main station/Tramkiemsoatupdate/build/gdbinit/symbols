@@ -13,8 +13,8 @@ end
 
 # Load bootloader symbols
 set confirm off
-    add-symbol-file E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/bootloader.elf
+    add-symbol-file D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader/bootloader.elf
 set confirm on
 
 # Load application symbols
-file E:/ESP32_VisualCode/Tramkiemsoatupdate/build/Tramkiemsoatupdate.elf
+file D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/Tramkiemsoatupdate.elf

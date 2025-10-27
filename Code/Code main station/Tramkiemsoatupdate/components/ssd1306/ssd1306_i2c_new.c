@@ -18,9 +18,9 @@
 #define I2C_NUM I2C_NUM_0 // if spi is selected
 #endif
 
-// TỐC ĐỘ I2C - Với external pull-up 4.7kΩ, có thể dùng 400kHz
-#define I2C_MASTER_FREQ_HZ 400000 // 400kHz - Tốc độ tối đa của SSD1306
-#define I2C_TICKS_TO_WAIT 100     // Timeout 100 ticks
+// TỐC ĐỘ I2C - Giảm xuống 100kHz để ổn định hơn
+#define I2C_MASTER_FREQ_HZ 100000 // 100kHz - Tốc độ thấp hơn, ổn định hơn
+#define I2C_TICKS_TO_WAIT 1000     // Timeout 1000 ticks
 
 void i2c_master_init(SSD1306_t * dev, int16_t sda, int16_t scl, int16_t reset)
 {
@@ -147,13 +147,40 @@ void i2c_init(SSD1306_t * dev, int width, int height) {
 	out_buf[out_index++] = OLED_CMD_DISPLAY_NORMAL;			// A6
 	out_buf[out_index++] = OLED_CMD_DISPLAY_ON;				// AF
 
+	// ✅ THÊM RETRY MECHANISM - THỬ 3 LẦN VỚI DELAY
 	esp_err_t res;
-	res = i2c_master_transmit(dev->_i2c_dev_handle, out_buf, out_index, I2C_TICKS_TO_WAIT);
-	if (res == ESP_OK) {
-		ESP_LOGI(TAG, "OLED configured successfully");
-	} else {
-		ESP_LOGE(TAG, "Could not write to device [0x%02x at %d]: %d (%s)", dev->_address, dev->_i2c_num, res, esp_err_to_name(res));
+	int retry_count = 0;
+	const int MAX_RETRIES = 3;
+	
+	while (retry_count < MAX_RETRIES) {
+		res = i2c_master_transmit(dev->_i2c_dev_handle, out_buf, out_index, I2C_TICKS_TO_WAIT);
+		
+		if (res == ESP_OK) {
+			ESP_LOGI(TAG, "✅ OLED configured successfully on attempt %d", retry_count + 1);
+			return; // Thành công, thoát hàm
+		}
+		
+		// Lỗi - log chi tiết
+		ESP_LOGW(TAG, "⚠️ OLED init attempt %d/%d failed: %d (%s)", 
+		         retry_count + 1, MAX_RETRIES, res, esp_err_to_name(res));
+		
+		retry_count++;
+		
+		if (retry_count < MAX_RETRIES) {
+			ESP_LOGI(TAG, "Retrying after 500ms delay...");
+			vTaskDelay(pdMS_TO_TICKS(500)); // Delay 500ms trước khi retry
+		}
 	}
+	
+	// Sau 3 lần thử vẫn fail
+	ESP_LOGE(TAG, "❌ Could not initialize OLED after %d attempts", MAX_RETRIES);
+	ESP_LOGE(TAG, "   Last error: [0x%02x at %d]: %d (%s)", 
+	         dev->_address, dev->_i2c_num, res, esp_err_to_name(res));
+	ESP_LOGE(TAG, "   Possible causes:");
+	ESP_LOGE(TAG, "   1. OLED not connected or damaged");
+	ESP_LOGE(TAG, "   2. Wrong I2C address (try 0x3D instead of 0x3C)");
+	ESP_LOGE(TAG, "   3. Pull-up resistors missing or incorrect");
+	ESP_LOGE(TAG, "   4. SDA/SCL wires disconnected or swapped");
 }
 
 

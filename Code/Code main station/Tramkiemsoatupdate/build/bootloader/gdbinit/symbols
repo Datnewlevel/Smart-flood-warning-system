@@ -17,4 +17,4 @@ set confirm off
 set confirm on
 
 # Load application symbols
-file E:/ESP32_VisualCode/Tramkiemsoatupdate/build/bootloader/bootloader.elf
+file D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/bootloader/bootloader.elf

@@ -1,4 +1,4 @@
-# Install script for directory: E:/ESP32_VisualCode/Tramkiemsoatupdate/main
+# Install script for directory: D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

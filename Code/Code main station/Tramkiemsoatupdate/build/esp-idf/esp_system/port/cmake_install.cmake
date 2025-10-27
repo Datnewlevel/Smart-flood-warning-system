@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("E:/ESP32_VisualCode/Tramkiemsoatupdate/build/esp-idf/esp_system/port/soc/esp32s3/cmake_install.cmake")
+  include("D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/build/esp-idf/esp_system/port/soc/esp32s3/cmake_install.cmake")
 endif()
 

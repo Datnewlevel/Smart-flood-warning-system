@@ -51,8 +51,8 @@ void ssd1306_display(void);
 esp_err_t ssd1306_print_str(uint8_t x, uint8_t y, const char *text, bool invert);
 
 // --- WiFi Definitions ---
-#define WIFI_SSID      "Your_SSID"
-#define WIFI_PASS      "Your_PASSWORD"
+#define WIFI_SSID      "The Bao - Tang 1"
+#define WIFI_PASS      "0342936197"
 
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
@@ -244,8 +244,24 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         ESP_LOGI(TAG, "DATA=%.*s", event->data_len, event->data);
         
         if (strncmp(event->topic, MQTT_CONTROL_TOPIC, event->topic_len) == 0) {
-            char command[32];
-            snprintf(command, sizeof(command), "%.*s", event->data_len, event->data);
+            // Parse JSON data from Node-RED
+            char data_buffer[256];
+            snprintf(data_buffer, sizeof(data_buffer), "%.*s", event->data_len, event->data);
+            
+            cJSON *json = cJSON_Parse(data_buffer);
+            if (json == NULL) {
+                ESP_LOGE(TAG, "Failed to parse JSON control message");
+                break;
+            }
+            
+            cJSON *command_obj = cJSON_GetObjectItem(json, "command");
+            if (command_obj == NULL || !cJSON_IsString(command_obj)) {
+                ESP_LOGE(TAG, "Invalid command in JSON");
+                cJSON_Delete(json);
+                break;
+            }
+            
+            const char *command = command_obj->valuestring;
             ESP_LOGI(TAG, "🎛️ Control command received: %s", command);
             
             if (strcmp(command, "buzzer_on") == 0) {
@@ -281,6 +297,8 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
                 esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, status_msg, 0, 1, 0);
                 ESP_LOGI(TAG, "📊 Status sent: buzzer is %s", buzzer_enabled ? "enabled" : "disabled");
             }
+            
+            cJSON_Delete(json);
         }
         break;
         
@@ -610,41 +628,38 @@ void handle_water_level(float water_level) {
 
     static int last_warning_level = 0;
 
-    // Xác định trạng thái mực nước
+    // Determine water level status
     if (water_level > 20.0) {
-        strcpy(level_str, "NGUY HIEM!");
+        strcpy(level_str, "DANGER");
         new_warning_level = 3;
-        ESP_LOGE(TAG, "Muc nuoc NGUY HIEM: %.2f", water_level);
+        ESP_LOGE(TAG, "Water level DANGER: %.2f", water_level);
         gpio_set_level(LED_RED, 1);
-    } else if (water_level >10.0) {
-        strcpy(level_str, "CANH BAO!");
+    } else if (water_level > 10.0) {
+        strcpy(level_str, "WARNING");
         new_warning_level = 2;
-        ESP_LOGW(TAG, "Muc nuoc CANH BAO: %.2f", water_level);
+        ESP_LOGW(TAG, "Water level WARNING: %.2f", water_level);
         gpio_set_level(LED_YELLOW, 1);
     } else {
-        strcpy(level_str, "BINH THUONG");
+        strcpy(level_str, "NORMAL");
         new_warning_level = 1;
-        ESP_LOGI(TAG, "Muc nuoc BINH THUONG: %.2f", water_level);
+        ESP_LOGI(TAG, "Water level NORMAL: %.2f", water_level);
         gpio_set_level(LED_GREEN, 1);
     }
 
-    // ✅ CHỈ PHÁT ÂM THANH VÀ GỬI TELEGRAM KHI THAY ĐỔI TRẠNG THÁI
+    // Trigger audio and Telegram only on status change
     if (new_warning_level != last_warning_level) {
-        // Phát âm thanh tương ứng với trạng thái MỚI
-        ESP_LOGI(TAG, "⚠️ Trạng thái thay đổi: %d -> %d", last_warning_level, new_warning_level);
+        ESP_LOGI(TAG, "⚠️ Status changed: %d -> %d", last_warning_level, new_warning_level);
         
         if (new_warning_level == 3) {
-            dfplayer_play(3);  // File 003.mp3 - Nguy hiểm
+            dfplayer_play(3);  // 003.mp3
         } else if (new_warning_level == 2) {
-            dfplayer_play(2);  // File 002.mp3 - Cảnh báo
+            dfplayer_play(2);  // 002.mp3
         } else {
-            dfplayer_play(1);  // File 001.mp3 - Bình thường
+            dfplayer_play(1);  // 001.mp3
         }
         
-        // Delay nhỏ để DFPlayer xử lý lệnh
         vTaskDelay(pdMS_TO_TICKS(100));
-        
-        // Gửi thông báo đến Telegram
+        // Send Telegram notification
         char *telegram_message = malloc(150);
         if (telegram_message != NULL) {
             snprintf(telegram_message, 150, 
@@ -652,7 +667,6 @@ void handle_water_level(float water_level) {
                      "Trạng thái: %s\n"
                      "Mực nước: %.1f cm", 
                      level_str, water_level);
-            
             if (xQueueSend(telegram_message_queue, &telegram_message, (TickType_t)10) != pdPASS) {
                 ESP_LOGE(TAG, "Failed to post message to Telegram queue");
                 free(telegram_message);
@@ -661,32 +675,23 @@ void handle_water_level(float water_level) {
             }
         }
     } else {
-        // Không thay đổi trạng thái - chỉ log
-        ESP_LOGD(TAG, "Mực nước không đổi trạng thái: %.1fcm (%s)", water_level, level_str);
+        ESP_LOGD(TAG, "No status change: %.1fcm (%s)", water_level, level_str);
     }
     
-    // Cập nhật trạng thái cuối cùng
     last_warning_level = new_warning_level;
 
-    // Display on OLED (với error handling)
+    // Update OLED display
     if (oled_initialized) {
-        ESP_LOGD(TAG, "Updating OLED display...");
         ssd1306_clear();
         ssd1306_print_str(5, 10, line1, false);
         ssd1306_print_str(28, 37, level_str, false);
         ssd1306_display();
-        ESP_LOGD(TAG, "OLED updated successfully");
-    } else {
-        ESP_LOGW(TAG, "OLED not initialized, skipping display update");
     }
 
     // Publish to MQTT
     char json_payload[100];
     snprintf(json_payload, sizeof(json_payload), "{\"water_level\": %.2f}", water_level);
     esp_mqtt_client_publish(mqtt_client, MQTT_TOPIC, json_payload, 0, 1, 0);
-    ESP_LOGI(TAG, "Sent publish successful");
-
-    // Các trạng thái đã được xử lý ở trên (LED và âm thanh)
 }
 
 void telegram_send_task(void *pvParameters) {
@@ -890,7 +895,7 @@ void app_main(void) {
         
         // Phát file 004.mp3 khi khởi động
         ESP_LOGI(TAG, "=== Playing startup sound ===");
-        dfplayer_play(4);
+        dfplayer_play(5);
         vTaskDelay(pdMS_TO_TICKS(2000)); // Delay lâu hơn để đảm bảo âm thanh phát
         ESP_LOGI(TAG, "=== Startup sound played ===");
     }

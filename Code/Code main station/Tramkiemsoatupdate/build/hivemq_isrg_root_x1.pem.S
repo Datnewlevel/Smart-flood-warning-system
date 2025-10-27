@@ -1,4 +1,4 @@
-/* * Data converted from E:/ESP32_VisualCode/Tramkiemsoatupdate/main/certs/hivemq_isrg_root_x1.pem
+/* * Data converted from D:/Smart flood warning system/Code/Code main station/Tramkiemsoatupdate/main/certs/hivemq_isrg_root_x1.pem
  * (null byte appended)
  */
 .data

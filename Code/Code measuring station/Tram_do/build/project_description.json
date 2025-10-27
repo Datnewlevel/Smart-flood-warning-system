@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "Tram_do",
-    "project_version":    "9ece8c1-dirty",
+    "project_version":    "1",
     "project_path":       "E:/ESP32_VisualCode/Tram_do",
     "idf_path":           "C:/Users/Admin/esp/v5.5.1/esp-idf",
     "build_dir":          "E:/ESP32_VisualCode/Tram_do/build",
