@@ -4,13 +4,13 @@ A project to design and build a smart flood warning system model using ESP32 mic
 
 ---
 
-## 🎯 **Objective**
+## **Objective**
 
 To build a system capable of real-time water level measurement and delivering timely warnings to residents through various methods (LEDs, speakers, Telegram messages) to minimize flood-related damages.
 
 ---
 
-## ⚙️ **How It Works**
+## **How It Works**
 
 The system comprises two main stations:
 
@@ -29,7 +29,7 @@ The system comprises two main stations:
 
 ---
 
-## 🖼️ **System Diagrams**
+## **System Diagrams**
 
 ### Block Diagrams
 | Measuring Station Block Diagram | Control Station Block Diagram |
@@ -53,7 +53,7 @@ The system comprises two main stations:
 
 ---
 
-## 📱 **Product Images**
+## **Product Images**
 
 ### Physical Implementation
 | Product Images |
@@ -62,7 +62,7 @@ The system comprises two main stations:
 
 ---
 
-## 🌐 **Web Server & Monitoring**
+## **Web Server & Monitoring**
 
 The system integrates with a web-based monitoring solution using MQTT protocol:
 
@@ -84,7 +84,7 @@ The system integrates with a web-based monitoring solution using MQTT protocol:
 
 ---
 
-## 📌 **Hardware Components**
+## **Hardware Components**
 
 ### Measuring Station
 
@@ -102,20 +102,20 @@ The system integrates with a web-based monitoring solution using MQTT protocol:
 | :--- | :--- |
 | **Microcontroller** | ESP32-S3 |
 | **Communication** | LoRa Ra-02 (SX1278) |
-| **Display** | LCD with I2C, 3x Status LEDs |
+| **Display** | Oled 0.96inch, 3x Status LEDs |
 | **Audio** | Loudspeaker for audio alerts |
 | **Connectivity** | Wi-Fi for MQTT communication to HiveMQ |
 | **Other** | Resistors |
 
 ---
 
-## 💻 **Source Code** (Use ESP-IDF)
+## **Source Code** (Use ESP-IDF)
 
 *   **Measuring Station:** `Code/Code measuring station/Tram_do`
 *   **Control Station:** `Code/Code main station/Tram_kiem_soat`
 
 ---
 
-## 🛠️ **Setup and Usage**
+## **Setup and Usage**
 
 *(You can add detailed instructions here on how to compile and flash the code to the ESP32s, as well as how to configure Wi-Fi and the Telegram token for the control station.)*
