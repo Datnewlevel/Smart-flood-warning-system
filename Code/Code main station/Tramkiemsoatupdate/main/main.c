@@ -1,13 +1,3 @@
-/*
- * Main application file for the ESP32-S3 LoRa Control Station.
- * This file contains the logic for:
- * - Initializing WiFi and connecting to the network.
- * - Initializing and connecting to an MQTT broker.
- * - Receiving LoRa data packets with water level information.
- * - Providing audible (buzzer, DFPlayer) and visual (LEDs, OLED) alerts.
- * - Publishing received data to the MQTT broker.
- */
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
